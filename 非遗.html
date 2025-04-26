@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>非遗传承页面</title>
+    <link rel="stylesheet" href="./css/xsstyle.css" />
+    <link rel="stylesheet" href="./css/12style.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/libiao.css" />
+
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="image/logo.png" alt="">
+            <h1>匠游江西</h1>
+          </div>
+          <nav>
+            <ul>
+              <li><a href="index.html">赣风启航</a></li>
+              <li><a href="seasons-main.html">赣韵四季</a></li>
+              <li><a href="非遗.html" class="active">匠游江西</a></li>
+              <li><a href="food.html">赣饭人</a></li>
+            </ul>
+          </nav>
+    </header>
+
+
+
+    <div id="videoModal" class="video-modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeVideo()">&times;</span>
+            <video id="videoPlayer" controls>
+                <source src="" type="video/mp4">
+                您的浏览器不支持视频播放
+            </video>
+        </div>
+    </div>
+    <div class="background" id="background">
+        <div class="text-container">
+            <a href="https://www.jxich.cn/#firstPage" target="_blank">
+                <span class="text-line-chinese">非遗传承</span>
+            </a>
+            <span class="text-line-english">Inheritance of Intangible Cultural Heritage</span>
+        </div>
+    </div>
+    <div class="operLine">
+        <span class="line">守艺者说</span>
+    </div>
+    <div class="container">
+        <!-- 第一页 -->
+        <div class="page active-page" id="page1">
+            <div class="row">
+                <div class="image-box">
+                    <img src="./image/fy1-1.jpg" alt="">
+                    <div class="overlay">
+                        <button onclick="openVideo('./video/fy1-1.mp4')">了解更多</button>
+                    </div>
+                </div>
+                <div class="text-box">
+                    <h2>婺源傩舞</h2>
+                    <p>婺源傩舞，又称 “鬼舞” 或 “舞鬼”，是赣傩重要分支，起源于唐，盛行于明初，属第一批国家级非物质文化遗产。其全盛时有 “三十六傩班、七十二狮班” ，狮傩同演，特色鲜明。因婺源地理闭塞，傩舞风格古朴粗犷、简练传神，动作具顺拐、屈膝、下沉、含胸、挺腹特征，沉劲与灵动兼具。表演形式丰富，有独舞、双人舞、群舞，节目超 60 个，涵盖原始驱邪（如《执架》 ）、神话演绎（如《开天辟地》 ）、动物模仿与农耕主题（如《舞仙鹤》 ）。服饰由明代夏布花衣发展而来，融入徽剧蟒袍元素；面具用樟木雕刻，超 200 个且无一雷同。傩班活动从春节持续到清明，严守 “开箱”“封箱” 等仪式，在 “开光”“传艺” 中遵循独特定规，完整保留傩文化仪式与历史底蕴。</p>
+                </div>
+            </div>
+
+            <div class="row">
+                
+                <div class="image-box">
+                    <img src="./image/fy1-2.jpg" alt="">
+                    <div class="overlay">
+                        <button onclick="openVideo('./video/fy1-2.mp4')">了解更多</button>
+                    </div>
+                </div>
+                <div class="text-box">
+                    <h2>赣剧</h2>
+                    <p>赣剧是江西省传统戏曲剧种，于1951年由赣东北地区的饶河戏与信河戏融合后正式定名，现为国家级非物质文化遗产。它以弋阳高腔为根基，融合昆腔与乱弹形成高、昆、乱多声腔体系，其中高腔保留"锣鼓干唱、人声帮和"的原始特色，弹腔则以西皮、二黄为主要曲调。其行当传承明代"九角头"规制并逐步扩展，现存剧目六百余出，包括历史题材的"老路戏"和反映市井生活的"水路戏"。作为赣文化的重要载体，赣剧曾形成"村村有戏看"的盛况，至今赣东北仍留存二三百座明清古戏台。江西省赣剧团于1953年在南昌成立，标志着这一古老艺术的规范化发展。其中陈俐老师为著名的赣剧传承人。</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="image-box">
+                    <img src="./image/fy1-3.jpg" alt="">
+                    <div class="overlay">
+                        <button onclick="openVideo('./video/fy1-3.mp4')">了解更多</button>
+                    </div>
+                </div>
+                <div class="text-box">
+                    <h2>景德镇手工制瓷</h2>
+                    <p>景德镇手工制瓷技艺发源于五代，以高岭土为基，经千年锤炼形成“七十二道精工”体系，涵盖采矿、拉坯、利坯、画坯、施釉、烧窑等核心工序。宋元时期奠定青白瓷与彩瓷根基，明代首创御窑厂制度，清代以“过手七十二”分工体系登顶中国制瓷巅峰，创烧青花、粉彩（“珠山八友”革新）、颜色釉等经典品类。其独创的“二元配方”制胎法突破高温硬质瓷瓶颈，融汇南北窑艺精华，推动中国陶瓷从实用器走向艺术化。依托昌江流域得天独厚的瓷土资源与匠人智慧，这项“泥与火”的技艺至今仍延续古法，成为世界认知中华文明的重要符号，被誉为“活态陶瓷工艺百科全书”。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第二页 -->
+        <div class="page active-page" id="page2">
+            <div class="row">
+                <div class="image-box">
+                    <img src="./image/fy2-1.jpg" alt="">
+                    <div class="overlay">
+                        <button onclick="openVideo('./video/fy2-1.mp4')">了解更多</button>
+                    </div>
+                </div>
+                <div class="text-box">
+                    <h2>赣南采茶舞</h2>
+                    <p>赣南采茶戏发源于明末清初赣南茶区，以民间采茶歌、采茶灯为基础发展而成，距今已有400余年历史，是第一批国家级非物质文化遗产。其最初因“二旦一丑”或“生、旦、丑”三人表演得名“三角班”，流行于客家聚居地，尤以定南地区为申报代表。剧目多聚焦市井生活与男欢女爱，以喜剧、闹剧为主，语言诙谐活泼，表演载歌载舞，融民间歌舞、灯彩及口头文学于一体，充满烟火气息。音乐唱腔以客家方言演绎，形成“茶腔”“灯腔”为主、“路腔”“杂调”为辅的“三腔一调”体系，伴奏采用勾筒、唢呐、锣鼓等传统乐器。表演以小丑、小旦为核心，讲究“三角成班，两小当家”，现存《补皮鞋》《睄妹子》等90余部传统剧目，生动展现了赣南茶农迎客娱情的智慧与客家人文风貌。</p>
+                </div>
+            </div>
+
+            <div class="row">
+                
+                <div class="image-box">
+                    <img src="./image/fy2-2.jpg" alt="">
+                    <div class="overlay">
+                        <button onclick="openVideo('./video/fy2-2.mp4')">了解更多</button>
+                    </div>
+                </div>
+                <div class="text-box">
+                    <h2>瓷板画</h2>
+                    <p>南昌瓷板画是第二批国家级非物质文化遗产，发源于清末景德镇珠山八友邓碧珊开创的瓷上肖像画，经民国时期发扬光大、新中国成立后专业化发展及改革开放走向国际。该艺术以白胎瓷为载体，独创九宫格定位与鱼鳞点子笔法，经选材、绘画、精修、施釉、复烧等严谨工序，融合传统书画精髓与陶瓷技艺。早期专绘黑白家族肖像，现拓展出山水、花卉等多元题材及青花、釉里红等品类，兼具形神兼备的艺术表现与耐保存的物理特性。作品自1915年斩获巴拿马国际博览会金奖以来，屡获国家级工艺大奖，其静中寓动、虚中写实的独特美学吸引多国艺术家前来研习，成为彰显中国陶瓷文化魅力的艺术瑰宝。</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="image-box">
+                    <img src="./image/fy2-3.jpg" alt="">
+                    <div class="overlay">
+                        <button onclick="openVideo('./video/fy2-3.mp4')">了解更多</button>
+                    </div>
+                </div>
+                <div class="text-box">
+                    <h2>甲路纸伞</h2>
+                    <p>甲路纸伞制作技艺是婺源传统工艺的代表，发端于南宋咸淳年间（1269年），以“甲路伞甲天下”闻名，清代载入县志，1936年获国际博览会金奖。其核心技艺以竹木为骨、手工皮纸为面，独创活动节点、竹销钉连接与楔式自锁结构，融入力学原理实现伞骨弹性伸缩，兼具抗冲击性与轻便性。制作需经选竹、刨青、削骨、楔合等30余道工序，尤以裱伞绘画为特色——伞面采用类宣纸材质，艺人题诗作画，赋予晴雨伞“行走的文人画”雅韵。康熙年间“石子击伞”传说印证其坚固品质，民谣“景德镇的瓷器，甲路的伞”道出历史地位。当代在传承大红油纸伞、龙凤铁皮刮画等经典之余，创新青花伞、丝绸伞等品类，延续“形如荷盖、画若丹青”的江南匠心传统。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第三页 -->
+        <div class="page active-page" id="page3">
+            <div class="row">
+                <div class="image-box">
+                    <img src="./image/fy3-1.jpg" alt="">
+                    <div class="overlay">
+                        <button onclick="openVideo('./video/fy3-1.mp4')">了解更多</button>
+                    </div>
+                </div>
+                <div class="text-box">
+                    <h2>兴国山歌</h2>
+                    <p>兴国山歌是流传于江西省兴国县及周边地区的汉族民歌，具有千年历史，是客家人在劳动中消解疲劳、传情达意的艺术形式，是第一批国家级非物质文化遗产代表性项目名录传统音乐类项目。其形式多样涵盖独唱、对唱、联唱等，按内容可分为锁歌、尾驳尾、故事山歌等七类，以即兴创作著称，素有"山歌从来冇歌本，灵翻刁钻靠肚才"之说。典型结构以"哎呀嘞"起兴，歌腹自由跌宕展现个人风格，结尾以"同志格"等呼应语收束，形成独特韵律。该艺术与客家民俗深度融合，跳觋师傅通过宗教仪式传唱山歌，使民间信仰成为重要传承载体，既保留了祈福禳灾的民俗功能，又通过即兴编词与演唱技艺的考核机制延续艺术生命力，堪称客家文化活态传承的典范。</p>
+                </div>
+            </div>
+
+            <div class="row">
+                
+                <div class="image-box">
+                    <img src="./image/fy3-2.jpg" alt="">
+                    <div class="overlay">
+                        <button onclick="openVideo('./video/fy3-2.mp4')">了解更多</button>
+                    </div>
+                </div>
+                <div class="text-box">
+                    <h2>莲花打锡</h2>
+                    <p>莲花打锡发源于西汉时期（安成侯墓出土文物为证），主要流传于莲花县路口镇诸村。这项以纯锡为原料的手工技艺，历经熔锡、抛光等十余道工序，打造出兼具实用与艺术价值的器皿，涵盖餐饮、祭祀、酿造等五大类，尤以清康熙年间御制锡质“康熙通宝”（存世仅一枚）及1921年镇邪锡兵器为代表。其制品融合银器清亮与青铜器典雅的审美特质，更具备保鲜防腐的物理特性，质优价廉广泛应用于民俗生活。据县志记载，街头村曾以“打锡为主业”，匠人农忙耕作、农闲携简易工具走乡串户，技艺辐射周边县市。而今这项承载千年匠心的技艺，既延续着《打锡歌》的文化记忆，也在现代生活中维系着祭祀、婚嫁等传统应用场景。</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="image-box">
+                    <img src="./image/fy3-3.jpg" alt="">
+                    <div class="overlay">
+                        <button onclick="openVideo('./video/fy3-3.mp4')">了解更多</button>
+                    </div>
+                </div>
+                <div class="text-box">
+                    <h2>歙砚</h2>
+                    <p>歙砚，作为中国四大名砚之一，始于唐代中叶（据《歙州砚谱》载唐开元年间现世），盛于宋代，因石材取自婺源龙尾山且古属歙州得名。其以“坚润双绝”的石质特性著称，兼具“涩不留笔、滑不拒墨”的实用美学，经采石、雕琢（浮雕/阴刻等七道工序）、打磨等流程，将罗纹、金星等五大类天然纹理化为艺术语言。南唐后主李煜首推其为御砚，欧阳修、苏轼等历代文豪赋诗颂扬，宋代蝴蝶砚、明清夔龙砚等历代名作印证“砚国名珠”之誉。当代胡中泰等传承人延续古法，创新飞天砚等精品，使这项融合地质奇珍与雕刻绝技的千年技艺，持续书写“石冠群山”的文化传奇。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第四页 -->
+        <div class="page active-page" id="page4">
+            <div class="row">
+                <div class="image-box">
+                    <img src="./image/fy4-1.jpg" alt="">
+                    <div class="overlay">
+                        <button onclick="openVideo('./video/fy4-1.mp4')">了解更多</button>
+                    </div>
+                </div>
+                <div class="text-box">
+                    <h2>萍乡湘东傩面具</h2>
+                    <p>萍乡湘东傩面具雕刻技艺起源于清代湖南太丈传入的宋代傩面雕刻传统，现为国家级非物质文化遗产，集中分布于湘东区麻山、排上、荷尧等镇，现存元末至民国时期的700余件傩面遗存。专职艺人"处士"传承宋代精细雕法，运用浮雕、透雕等技法结合夸张与写实风格，历经选材、雕刻、开光等六道工序，耗时数月以樟木雕刻完成。傩面按功能分为供奉与舞耍两类，色彩包含彩绘（金红黄黑白）、单色及原色，造型涵盖凶猛、端庄、诙谐三大类，装饰形式分冠饰、幞头、发髻、怪兽四型。尤其珍贵的是传承人仍保留440套完整宋代人形傩面雕刻技艺，作品兼具艺术性与实用性，既用于传统神庙供奉，也融入现代文旅、家居装饰领域，展现传统工艺的当代生命力。</p>
+                </div>
+            </div>
+
+            <div class="row">
+                
+                <div class="image-box">
+                    <img src="./image/fy4-2.jpg" alt="">
+                    <div class="overlay">
+                        <button onclick="openVideo('./video/fy4-2.mp4')">了解更多</button>
+                    </div>
+                </div>
+                <div class="text-box">
+                    <h2>瑞昌剪纸</h2>
+                    <p>瑞昌剪纸起源于汉晋时期，其雏形可见于1972年出土的西汉古墓砖纹，现为第二批国家级非物质文化遗产。这项扎根民间的手艺以剪刀为工具，传统使用账本纸及黑红白蓝四色纸，独创南北融合技法——既含北派雄劲厚重，又具南派灵动细腻，阴阳剪法并施，善用非对称布局与非镂空手法。题材涵盖自然风物、民俗场景、神话传说，作品应用于节庆礼仪、家居装饰及刺绣图样，尤以《水浒108将》（11米长卷）、《八十七神仙图》等恢弘巨制闻名。瑞昌自1992年起相继获评江西省及国家级“剪纸之乡”“民间艺术之乡”，近年更创新推出红色题材、庐山风光等系列。当地通过建立剪纸基地、非遗进校园等举措，持续活化传承这项“简练匀称、剪法明快”的千年技艺。</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="image-box">
+                    <img src="./image/fy4-3.jpg" alt="">
+                    <div class="overlay">
+                        <button onclick="openVideo('./video/fy4-3.mp4')">了解更多</button>
+                    </div>
+                </div>
+                <div class="text-box">
+                    <h2>赣南客家围屋营造</h2>
+                    <p>赣南客家围屋以龙南为核心的“三南”地区现存370余座围屋，尤以国保单位关西新围、燕翼围为典范。这项技艺融合中原建筑智慧与南方地理特性，采用“三合土+红糖蛋清糯米”配方夯筑墙体，独创金包银砌筑工艺，形成国字型、回字型等方形围屋为主体的聚落形态。其防御体系尤为精妙：凸角墙面、屋顶炮楼、铁皮重门、防撬石基构成立体防线，辅以上窄下宽射口、环屋壕沟与隐蔽暗井；生活空间则集居住、祭祀、议事、跑马坪于一体，实现攻守兼备与宗族共居的平衡。作为客家文化活态载体，赣南围屋以“聚族而居、楼堡合一”的建筑哲学，展现了比闽西土楼更成熟的防御系统与生活适配性，堪称中国古代民居建筑的军事化典范。</p>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <!-- 第五页 -->
+        <div class="page active-page" id="page5">
+            <div class="row">
+                <div class="image-box">
+                    <img src="./image/fy5-1.jpg" alt="">
+                    <div class="overlay">
+                        <button onclick="openVideo('./video/fy5-1.mp4')">了解更多</button>
+                    </div>
+                </div>
+                <div class="text-box">
+                    <h2>武宁打鼓歌</h2>
+                    <p>武宁打鼓歌，亦称“锄山鼓”，是流传于江西省武宁县的传统劳动音乐艺术，清代乾隆年间兴盛，其源于集体农耕场景，在挖地、锄茶等劳作时由鼓匠击鼓领唱，劳动者以锄击节、搭号应和，形成“一鼓众和”的互动形式。表演以“起号”开场，通过四番鼓结构推进，按“起头番、落二番、紧三番、杀四番”十二字诀调控节奏，每番鼓点、曲速与唱词随劳作进程即兴演变。内容涵盖情歌、讽喻歌及生产知识歌谣，题材包罗万象，唱词见物起兴、灵活编创。曲牌体音乐铿锵激越，融合劳动号子的力量感与山歌的抒情性，兼具协调劳作节奏、缓解疲劳及传承文化的多重功能，被誉为“赣北农耕文明的活态音声档案”。</p>
+                </div>                
+            </div>
+            <div class="row">
+                <div class="image-box">
+                    <img src="./image/fy5-2.jpg" alt="">
+                    <div class="overlay">
+                        <button onclick="openVideo('./video/fy5-2.mp4')">了解更多</button>
+                    </div>                    
+                </div>
+                <div class="text-box">
+                    <h2>吉州窑陶瓷烧制</h2>
+                    <p>吉州窑陶瓷烧制技艺始于唐末，鼎盛于南宋，以独创“木叶天目”“剪纸贴花天目”闻名于世，其釉下彩绘技术为元青花瓷奠定基础。该窑系中国保存最完整的古窑群之一，24处窑址见证其融汇南北窑艺的辉煌历史，景德镇青花瓷匠人多承袭永和镇技艺传统。吉州窑瓷品类涵盖青釉、黑釉、彩绘等六大类，独创剪纸贴花、木叶贴花等装饰技法，尤以鹧鸪斑、兔毫纹等窑变结晶釉为珍。失传700年后，1980年代通过复烧工程成功恢复木叶纹黑釉瓷等核心技艺，重现釉下彩绘、窑变结晶等绝技。其“木叶纹黑釉瓷”系列作品兼具宋瓷雅韵与东方哲学意蕴，被英日等国博物馆珍藏，成为彰显中华陶瓷文明活态传承的典范。</p>
+                </div>
+            </div>                
+            <div class="row">
+                <div class="image-box">
+                    <img src="./image/fy5-3.jpg" alt="">
+                    <div class="overlay">
+                        <button onclick="openVideo('./video/fy5-3.mp4')">了解更多</button>
+                    </div>
+                </div>
+                <div class="text-box">
+                    <h2>铅山连四纸制作</h2>
+                    <p>铅山连四纸制作技艺始于宋元时期，明清鼎盛时从业者占全县人口三成，以“七十二道工序”纯手工制作闻名。其选用立夏嫩竹为材，配以当地清泉、水卵虫树药液及土碱，经沤塘漂白、踩料抄纸等古法流程，产出“连四”“海月连”“改良连”等特色品类。成品纸色如霜、柔韧细密，兼具防蛀耐热、千年不褪的“寿纸”特质，明代《天工开物》详载其艺，《十七史》《古今图书集成》等典籍皆以此纸印制。这项承载千年匠心的技艺，虽无现代理化标准，却凭经验智慧自成体系，现仍延续于石塘、陈坊等竹乡，成为研究中国传统造纸文明的活态标本。</p>
+                </div>
+            </div>
+        </div>    
+
+        <!-- 第六页 -->
+        <div class="page active-page" id="page5">
+            <div class="row">
+                <div class="image-box">
+                    <img src="./image/fy6-1.jpg" alt="">                            
+                    <div class="overlay">
+                        <button onclick="openVideo('./video/fy6-1.mp4')">了解更多</button>
+                    </div>
+                </div>
+                <div class="text-box">
+                    <h2>瑞昌竹编</h2>
+                    <p>瑞昌竹编是发端于商周时期的传统竹编技艺（1988年商周矿冶遗址出土竹编器物为证），现为第二批国家级非物质文化遗产。该技艺以本地山竹为材，历经破竹、取层（可于二三毫米竹条取二十余层）、浸煮、编织等十余道精密工序，制成兼具实用与审美的竹器，尤以斗笠、丝箩、米筛“篾器三宝”著称。其制品结构严谨，底腰筒口提手五部俱全，锁口密实、表层平滑，既有米筛簸箕等生活器具，亦有20世纪70年代后发展的花篮礼品盒等艺术竹编，及当代创新的竹亭篱笆等园艺产品。2001年获中国竹文化节金奖的瑞昌竹编，通过师徒传承在南义、夏畈等乡镇延续，既维系着“竹编之乡”的文化根脉，也成为山民致富的特色产业，产品远销海内外市场。</p>
+                </div>                
+            </div>
+                <div class="row">
+                    <div class="image-box">
+                    <img src="./image/fy6-2.jpg" alt="">
+                    <div class="overlay">
+                        <button onclick="openVideo('./video/fy6-2.mp4')">了解更多</button>
+                    </div>                    
+                </div>
+                <div class="text-box">
+                    <h2>丰城岳家狮</h2>
+                    <p>丰城岳家狮为宋代岳飞所创，属中国舞狮四大流派之一，被列入第二批国家级非物质文化遗产。其以“威、雄、险”为风格核心，表演需融合“三阴三阳”理念——阴者静若岳母刺字的隐忍，阳者动如《满江红》的激昂，动静相生间展现将帅风骨。动作体系分“阴”“阳”两类：阴功如“迈方步”“梳须”等轻盈洒脱，形似岳飞书法；阳技如“仰头长啸”“腾跃滚吼”则尽显沙场豪气，狮头狮尾动作高度统一，刚劲连贯。狮身以八尺土布制成，狮头威严朴拙，背脊苎麻狮毛暗喻“精忠报国”刺字，象征民族气节。伴奏以锣鼓钹奏出战场韵律，强调硬功实战，摒弃浮华修饰，通过狮舞演绎忠孝精神与抗争意志，千年传承间始终赓续着岳飞“打硬仗、迎艰险”的文化基因。</p>
+                </div>
+            </div>                
+            <div class="row">
+                <div class="image-box">
+                    <img src="./image/fy6-3.jpg" alt="">
+                    <div class="overlay">
+                        <button onclick="openVideo('./video/fy6-3.mp4')">了解更多</button>
+                    </div>
+                </div>                        
+                <div class="text-box">
+                    <h2>婺源绿茶制作</h2>
+                    <p>婺源绿茶制作技艺是发源于唐代茶圣陆羽《茶经》记载的蒸青饼茶古法，宋代跻身全国六大绝品名茶，明清为贡品，1915年获巴拿马万国博览会金奖。其核心工艺承袭明代炒青革新，在安徽松萝茶基础上发展出摊青、杀青、热揉、烘炒等十余道严苛工序，尤以“春分采一芽一叶、清明采一芽二叶”的时令标准著称。依托赣浙皖交界处的生态优势，所产绿茶紧细圆直，以“叶绿、汤清、香浓、味醇”闻名，衍生仙枝、茗眉、毛尖等经典品类，2010年获中国农产品地理标志认证。如今全县建成16.5万亩茶园（5万亩有机基地），有机茶远销20余国，成为融合千年非遗技艺与现代绿色产业的文化名片。</p>
+                </div>
+            </div>
+        </div> 
+        <!-- 第七页 -->
+        <div class="page active-page" id="page5">
+            <div class="row">
+                <div class="image-box">
+                    <img src="./image/fy7-1.jpg" alt="">                            
+                    <div class="overlay">
+                        <button onclick="openVideo('./video/fy7-1.mp4')">了解更多</button>
+                    </div>
+                </div>
+                <div class="text-box">
+                    <h2>夏布绣</h2>
+                    <p>夏布绣发轫于北宋初年，依托江西苎麻布（唐宋贡品）为底料，以纯手工纺织的夏布为载体，经软化处理、热烫定形后，运用透底针、虚实针等多元针法施绣。这项融合织物肌理与水墨意境的技艺，以线条塑形、淡彩传神，成品古朴典雅，传统多用于帐幔、童帽等生活饰品。当代经张小红等艺人创新，发展为艺术刺绣，并创立“夏绣”等省级著名商标，建成行业博物馆。其耐保存、易携带的特质激活市场活力，带动下岗妇女就业与麻农增收，形成“非遗传承+产业振兴”的良性循环，成为新余文化与社会发展的特色名片。</p>
+                </div>                
+            </div>
+                <div class="row">
+                    <div class="image-box">
+                    <img src="./image/fy7-2.jpg" alt="">
+                    <div class="overlay">
+                        <button onclick="openVideo('./video/fy7-2.mp4')">了解更多</button>
+                    </div>                    
+                </div>
+                <div class="text-box">
+                    <h2>于都唢呐公婆吹</h2>
+                    <p>于都唢呐公婆吹是流传于江西省于都县宽田乡等地的独特吹奏艺术，其历史可追溯至汉代，以"公""婆"两支形制相异的唢呐为核心：公吹长71厘米，七孔哨尖，音色高亢；婆吹长82.5厘米，六孔扁哨，罕见的中低音浑厚苍劲，两者合奏形成阴阳相济的独特声韵。演奏保留古法制艺，从伐木制管、砍竹做天心到采芦制哨均手工完成，常配以堂鼓、锣钹等打击乐，形成鼓板分明、刚柔相济的演奏体系。作为赣南客家文化符号，其曲调贯穿婚丧嫁娶等民俗活动，更在红色历史中留下印记——1929年毛泽东在于都万人大会上，乐手曾以公婆吹为长征红军壮行。唢呐艺人"婚丧嫁娶没有我，冇声冇息蛮难过"的顺口溜，生动诠释了这项千年乐艺与民众生活的深度交融。</p>
+                </div>
+            </div>                
+            <div class="row">
+                <div class="image-box">
+                    <img src="./image/fy7-3.jpg" alt="">
+                    <div class="overlay">
+                        <button onclick="openVideo('./video/fy7-3.mp4')">了解更多</button>
+                    </div>
+                </div>                        
+                <div class="text-box">
+                    <h2>鄱阳脱胎漆器髹饰</h2>
+                    <p>鄱阳脱胎漆器髹饰与景德镇陶瓷、景泰蓝并称“中华三宝”。其历史可溯至汉代，明代辐射赣皖鄂浙，1915年获巴拿马博览会大奖，1980年摘得重庆工艺奖，2004年斩获联合国教科文国际民间艺术金奖。该技艺以天然大漆与苎麻布为材，经制模脱胎（独创凝固成形法）、隐花髹饰、宝砂推光等80余道工序，制成木胎、夹纻胎等多元器型，成品兼具抗腐蚀、耐高温、抗冲击的物理特性与“光亮如镜、触若凝脂”的美学特质。经历1995年漆厂火灾后，当地复兴漆树林5000亩，创立多家新企业，延续雕花贴金、漆下形等绝技，产品远销20余国，重现“轻似浮云、固若金石”的千年漆艺传奇。</p>
+                </div>
+            </div>
+        </div> 
+    </div>
+
+    <div class="pagination">
+        <button id="prevBtn">←</button>
+        <span class="page-numbers">
+            <span id="currentPage">1</span>/<span id="totalPages">2</span>
+        </span>
+        <button id="nextBtn">→</button>
+    </div>
+    
+    <div class="operLine">
+        <span class="line">手作赣风</span>
+    </div>
+
+    <div class="jzshipin">
+		<div class="vsp">
+			<div class="poster-main">
+		<div class="poster-btn poster-prev-btn"></div>
+		<ul class="poster-list">
+			<li class="poster-item"><a href="#"><video src="./video/lb1.mp4"  controls=""></video></a>
+				
+			</li>
+			<li class="poster-item"><a href="#"><video src="./video/lb2.mp4" controls=""></video></a>
+				 
+			</li>
+			<li class="poster-item"><a href="#"><video src="./video/lb3.mp4" controls=""></video></a>
+				
+			</li>
+			<li class="poster-item"><a href="#"><video src="./video/lb4.mp4" controls=""></video></a>
+				
+			</li>
+			<li class="poster-item"><a href="#"><video src="./video/lb5.mp4" controls=""></video></a>
+				
+			</li>
+            
+		</ul>
+		<div class="poster-btn poster-next-btn"></div>
+			</div>
+		</div>
+	</div>
+    <div class="operLine">
+        <span class="line">赣好物</span>
+    </div>
+    <div class="shier">
+		<div class="haowu">
+			<div class="grid" id="grid">
+			<photo-card img="./image/hw1.jpg" link="#"></photo-card>
+			<photo-card img="./image/hw2.jpg" link="#"></photo-card>
+			<photo-card img="./image/hw3.jpg" link="#"></photo-card>
+			<photo-card img="./image/hw4.jpg" link="#"></photo-card>
+			<photo-card img="./image/hw5.jpg" link="#"></photo-card>
+			<photo-card img="./image/hw6.jpg" link="#"></photo-card>
+			<photo-card img="./image/hw7.jpg" link="#"></photo-card>
+			<photo-card img="./image/hw8.jpg" link="#"></photo-card>
+			<photo-card img="./image/hw9.jpg" link="#"></photo-card>
+			<photo-card img="./image/hw10.jpg" link="#"></photo-card>
+			<photo-card img="./image/hw11.jpg" link="#"></photo-card>
+			<photo-card img="./image/hw12.jpg" link="#"></photo-card>
+			</div>
+		</div>
+	</div>
+
+    <div class="operLine">
+        <span class="line">赣新闻</span>
+    </div>
+    <div>
+        <section class="main_box">
+            <div id="app" class="box">
+                <ul>
+                    <a href="https://www.xinhuanet.com/city/20240103/0f89a1f6b95e477e88b4b156937215b4/c.html" target="_blank">
+                    <li class="box_ul_li clickable" href="">
+                        <h3>2024/01/03</h3> 
+                        <p>江西：“非遗+”让现代生活更美好</p> 
+                        <img src="./image/xinwen4.jpg" alt="img">
+                    </li>
+                    </a>
+                    <a href="https://www.thepaper.cn/newsDetail_forward_27800479" target="_blank">
+                    <li class="box_ul_li clickable" href="">
+                        <h3>2024/06/20</h3> 
+                        <p>吕雅婷：在传承中创新 让更多人看见玲珑瓷之美</p> 
+                        <img src="./image/xinwen5.jpg" alt="img">
+                    </li> 
+                    </a>
+                    <a href="https://nc.jxnews.com.cn/system/2025/01/20/020764110.shtml" target="_blank">
+                    <li class="box_ul_li clickable" href="">
+                        <h3>2025/01/20</h3> 
+                        <p>“非遗版”春节来啦 南昌这条“龙”已有700多年历史</p> 
+                        <img src="./image/xinwen2.jpg" alt="img">
+                    </li>
+                    </a>
+                    <a href="https://www.chinanews.com.cn/sh/2025/01-23/10358907.shtml" target="_blank">
+                    <li class="box_ul_li clickable" href="">
+                        <h3>2025/01/23</h3> 
+                        <p>赣江观澜：“非遗+”何以沁润赣鄱“肌理”？</p> 
+                        <img src="./image/xinwen3.jpg" alt="img">
+                    </li>
+                    </a>
+                    <a href="https://www.ihchina.cn/project_details/29750" target="_blank">
+                    <li class="box_ul_li clickable" href="">
+                        <h3>2025/02/17</h3>
+                        <p>2025江西春节图鉴：11城非遗盛宴，解锁千年华夏年味密码</p> 
+                        <img src="./image/xinwen1.jpg" alt="img">
+                    </li>
+                    </a>
+                    <div style="clear: both;">
+                    </div>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <script src="./js/script.js"></script>
+    <script src="./js/jquery-1.11.0.min.js"></script>
+	<script src="./js/vue.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+
+	<script type="text/javascript" src="./js/Carousel.js" ></script>
+	<script src="https://www.jq22.com/jquery/vue.min.js"></script>
+	<script type="text/javascript" src="./js/12script.js"></script>
+    <script type="text/javascript" src="../js/jquery-1.11.0.min.js" ></script>
+
+	<script type="text/javascript">
+   
+//边框效果--移入
+function biankuang(obj){
+    $(obj).find('.biankuang_1').stop(true).animate({
+        height:'305px'
+    },300)
+    $(obj).find('.biankuang_2').stop(true).delay(300).animate({
+        width:'360px'
+    },300)
+    $(obj).find('.biankuang_3').stop(true).animate({
+        height:'305px'
+    },300)
+    $(obj).find('.biankuang_4').stop(true).delay(300).animate({
+        width:'360px'
+    },300
+)
+}
+//边框效果--移出
+function biankuang1(obj){
+
+    $(obj).find('.biankuang_1').stop(true).delay(100).animate({
+        height:'0px'
+    },100)
+    $(obj).find('.biankuang_2').stop(true).animate({
+        width:'0px'
+    },100)
+    $(obj).find('.biankuang_3').stop(true).delay(100).animate({
+        height:'0px'
+    },100)
+    $(obj).find('.biankuang_4').stop(true).animate({
+        width:'0px'
+    },100)
+}
+//触发
+$('.spbq').hover(
+	function () {
+	  var obj = $(this);
+			$(obj).find('.text_gobuy').addClass('text_gobuy_show');
+			$(obj).find('.search_y').animate({left:'150',opacity:1},300);
+		biankuang(obj);
+	},
+	function () {
+	  var obj = $(this);
+		$(obj).find('.text_gobuy').removeClass('text_gobuy_show');
+		$(obj).find('.search_y').animate({left:'100',opacity:0},300);
+		biankuang1(obj);
+	}
+);
+//视频
+$(".poster-main").Carousel({
+"width":1260,		
+"height":400,		
+"posterWidth":600,	
+"posterHeight":500,
+"scale":.85,		
+"speed": 500,	
+"autoPlay":true,	
+"delay":2000,	
+"verticalAlign":"middle"	
+});
+
+
+</script>    
+
+
+</body>
+
+</html>    
