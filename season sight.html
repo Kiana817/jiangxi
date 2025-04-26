@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Journey HTML CSS Template</title>
+    <!-- 
+Journey Template 
+http://www.templatemo.com/tm-511-journey
+-->
+    <!-- load stylesheets -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
+    />
+    <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- Bootstrap style -->
+    <link rel="stylesheet" type="text/css" href="css/datepicker.css" />
+    <link rel="stylesheet" type="text/css" href="slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
+    <link rel="stylesheet" href="css/templatemo-style.css" />
+    <!-- Templatemo style -->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="tm-main-content" id="top">
+      <div class="tm-top-bar-bg"></div>
+      <div class="tm-top-bar" id="tm-top-bar">
+        <div class="container">
+          <div class="row">
+            <nav class="navbar navbar-expand-lg narbar-light">
+              <a class="navbar-brand mr-auto" href="#">
+                <img src="img/logo.png" alt="Site logo" />
+                赣韵四季
+              </a>
+              <button
+                type="button"
+                id="nav-toggle"
+                class="navbar-toggler collapsed"
+                data-toggle="collapse"
+                data-target="#mainNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div id="mainNav" class="collapse navbar-collapse tm-bg-white">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#top"
+                      >春赏 <span class="sr-only">(current)</span></a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link " href="#tm-section-summer"
+                      >夏栖</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#tm-section-autumn"
+                      >秋观</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#tm-section-winter">冬览</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+          <!-- row -->
+        </div>
+        <!-- container -->
+      </div>
+      <!-- .tm-top-bar -->
+
+      <div class="tm-page-wrap mx-auto">
+        <section class="tm-banner">
+          <div class="tm-container-outer tm-banner-bg">
+            <div class="container">
+              <div class="row tm-banner-row tm-banner-row-header">
+                <div class="col-xs-12">
+                  <div class="tm-banner-header">
+                    <h1 class="text-uppercase tm-banner-title">
+                      春赏·夏栖·秋观·冬览
+                    </h1>
+                    <img src="img/dots-3.png" alt="Dots" />
+                    <p class="tm-banner-subtitle">选择最适合你的旅游时间</p>
+                    <a href="seasons-main.html" class="tm-down-arrow-link">
+                      <i class="fa fa-2x fa-angle-down tm-down-arrow"></i>
+                    </a>
+                  </div>
+                </div>
+                <!-- col-xs-12 -->
+              </div>
+              <!-- row -->
+              <div class="row tm-banner-row" id="tm-section-search">
+                <form action="http://127.0.0.1:5000/generate_trip" method="post" enctype="multipart/form-data" 
+                class="tm-search-form tm-section-pad-2">
+                  <div class="form-row tm-search-form-row">
+                    <div
+                      class="form-group tm-form-group tm-form-group-pad tm-form-group-1"
+                    >
+                      <label for="inputCity">选择你想去的地点</label>
+                      <select
+                        name="destination"
+                        class="form-control tm-select"
+                        id="inputCity"
+                      >
+                        <!-- 添加具体的地点选项，这里只是示例，你可以根据实际情况修改 -->
+                        <option value="南昌" selected>南昌</option>
+                        <option value="景德镇">景德镇</option>
+                        <option value="上饶">上饶</option>
+                        <option value="九江">九江</option>
+                        <option value="赣州">赣州</option>
+                        <option value="吉安">吉安</option>
+                        <option value="宜春">宜春</option>
+                      </select>
+                    </div>
+                    <div class="form-group tm-form-group tm-form-group-1">
+                      <div
+                        class="form-group tm-form-group tm-form-group-pad tm-form-group-2"
+                      >
+                        <label for="inputRoom">季节</label>
+                        <select
+                          name="room"
+                          class="form-control tm-select"
+                          id="inputRoom"
+                        >
+                          <option value="春季" selected>春季</option>
+                          <option value="夏季">夏季</option>
+                          <option value="秋季">秋季</option>
+                          <option value="冬季">冬季</option>
+                        </select>
+                      </div>
+                      <div
+                        class="form-group tm-form-group tm-form-group-pad tm-form-group-3"
+                      >
+                        <label for="inputAdult">天气</label>
+                        <select
+                          name="adult"
+                          class="form-control tm-select"
+                          id="inputAdult"
+                        >
+                          <option value="晴天" selected>晴天</option>
+                          <option value="多云">多云</option>
+                          <option value="阴天">阴天</option>
+                          <option value="雨天">雨天</option>
+                          <option value="雪天">雪天</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- form-row -->
+                  <div class="form-row tm-search-form-row">
+                    <div
+                      class="form-group tm-form-group tm-form-group-pad tm-form-group-3"
+                    >
+                      <label for="inputCheckIn">开始时间</label>
+                      <input
+                        name="check-in"
+                        type="text"
+                        class="form-control"
+                        id="inputCheckIn"
+                        placeholder="start"
+                      />
+                    </div>
+                    <div
+                      class="form-group tm-form-group tm-form-group-pad tm-form-group-3"
+                    >
+                      <label for="inputCheckOut">结束时间</label>
+                      <input
+                        name="check-out"
+                        type="text"
+                        class="form-control"
+                        id="inputCheckOut"
+                        placeholder="finish"
+                      />
+                    </div>
+                    <div
+                      class="form-group tm-form-group tm-form-group-pad tm-form-group-1"
+                    >
+                      <label for="btnSubmit">&nbsp;</label>
+                      <button
+                        type="submit"
+                        class="btn btn-primary tm-btn tm-btn-search text-uppercase"
+                        id="btnSubmit"
+                      >
+                        点击生成你的最佳赣旅！
+                      </button>
+                    </div>
+                    <!-- 新增的空白框
+                    <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
+                      <div class="form-control" id="resultBox" style="height: 100px;"></div>
+                    </div> -->
+                  </div>
+                </form>
+              </div>
+              <!-- row -->
+              <div class="tm-banner-overlay"></div>
+            </div>
+            <!-- .container -->
+          </div>
+          <!-- .tm-container-outer -->
+        </section>
+
+        <section class="p-5 tm-container-outer tm-bg-gray">
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12 mx-auto tm-about-text-wrap text-center">
+                <h2 class="text-uppercase mb-4">
+                  江西<strong>四时景</strong>，岁岁画中游
+                </h2>
+                <p class="mb-4">
+                  江西的四季，季季皆景，每个季节都有着独特的韵味，等待着你来探寻。
+                </p>
+                <a href="#tm-section-2" class="text-uppercase btn-primary tm-btn"
+                  >继续探索</a
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="tm-container-outer" id="tm-section-2">
+          <section class="tm-slideshow-section">
+            <div class="tm-slideshow" >
+              <img src="img/tm-img-01.jpg" alt="Image" />
+              <img src="img/tm-img-02.jpg" alt="Image" />
+              <img src="img/tm-img-03.jpg" alt="Image" />
+              <img src="img/tm-img-04.jpg" alt="Image" />
+              <img src="img/tm-img-05.jpg" alt="Image" />
+            </div>
+            <div class="tm-slideshow-description tm-bg-primary">
+              <h2 class="">春天·Spring</h2>
+              <p>
+                山峦为墨，繁花作彩，把春天的热烈私藏进眼底。春至江西，婺源的油菜花率先苏醒。微风拂过，花浪翻涌，似是把阳光揉碎在了这片土地。白墙黑瓦的徽派建筑错落其间，是古朴与生机的碰撞。“儿童急走追黄蝶，飞入菜花无处寻”，漫步花海，感受这春日独有的灵动与浪漫
+                ，邂逅梦里田园。
+              </p>
+              <a
+                href="videos/spring.mp4"
+                class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight"
+                >了解更多</a
+              >
+            </div>
+          </section>
+          <section
+            class="clearfix tm-slideshow-section tm-slideshow-section-reverse"
+          >
+            <div class="tm-right tm-slideshow tm-slideshow-highlight" id="tm-section-summer">
+              <img src="img/tm-img-06.jpg" alt="Image" />
+              <img src="img/tm-img-07.jpg" alt="Image" />
+              <img src="img/tm-img-08.jpg" alt="Image" />
+              <img src="img/tm-img-09.jpg" alt="Image" />
+              <img src="img/tm-img-10.jpg" alt="Image" />
+            </div>
+
+            <div
+              class="tm-slideshow-description tm-slideshow-description-left tm-bg-highlight"
+            >
+              <h2 class="">夏天·Summer</h2>
+              <p>
+                江西的夏天，热烈滚烫。白日里，八一广场阳光炽热，纪念碑巍峨耸立，彰显英雄城的气魄。赣江波光闪烁，滕王阁在江畔静立，余晖为其镀上金边，尽显雄浑。夜幕降临，万寿宫街区灯火辉煌，小吃飘香，满是人间烟火，盛载着南昌夏日的热闹与温情。当炽热的阳光洒满赣鄱大地，庐山便成了绝佳的避暑圣地。山中植被繁茂，郁郁葱葱，漫步其间，听松涛阵阵，观飞瀑流泉，在牯岭镇的街头，感受岁月的悠然。而武功山的高山草甸，在夏日里更显翠绿，登上山巅，极目远眺，连绵的草甸与天际相接，仿佛走进了宫崎骏的动漫世界。
+              </p>
+              <a
+              href="videos/summer.mp4"
+              class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight"
+                >了解更多</a
+              >
+            </div>
+          </section>
+          <section class="tm-slideshow-section">
+            <div class="tm-slideshow" id="tm-section-autumn">
+              <img src="img/tm-img-11.jpg" alt="Image" />
+              <img src="img/tm-img-12.jpg" alt="Image" />
+              <img src="img/tm-img-13.jpg" alt="Image" />
+              <img src="img/tm-img-14.jpg" alt="Image" />
+              <img src="img/tm-img-15.jpg" alt="Image" />
+            </div>
+            <div class="tm-slideshow-description tm-bg-primary">
+              <h2 class="">秋天·Autumn</h2>
+              <p>
+                秋意渐浓时，乡村的稻田里，稻穗沉甸甸地低垂，一片金黄，农人们在田间忙碌收割，丰收的喜悦弥漫在每一寸空气里。三清山换上了五彩斑斓的衣裳。枫叶如丹，银杏流金，点缀在奇峰怪石之间，云雾缭绕，仿若仙境。龙虎山的丹崖碧水，在秋日的映衬下愈发明艳，乘一艘竹筏顺泸溪河而下，看两岸秋景如画，感受“碧水丹崖”的独特魅力。
+              </p>
+              <a
+              href="videos/autumn.mp4"
+              class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight"
+                >了解更多</a
+              >
+            </div>
+          </section>
+          <section
+            class="clearfix tm-slideshow-section tm-slideshow-section-reverse"
+          >
+            <div class="tm-right tm-slideshow tm-slideshow-highlight" id="tm-section-winter">
+              <img src="img/tm-img-16.jpg" alt="Image" />
+              <img src="img/tm-img-17.jpg" alt="Image" />
+              <img src="img/tm-img-18.jpg" alt="Image" />
+              <img src="img/tm-img-19.jpg" alt="Image" />
+              <img src="img/tm-img-20.jpg" alt="Image" />
+            </div>
+
+            <div
+              class="tm-slideshow-description tm-slideshow-description-left tm-bg-highlight"
+            >
+              <h2 class="">冬天·Winter</h2>
+              <p>
+                冬日的庐山，银装素裹，别有一番韵味。雪后的牯岭镇，宛如童话小镇，如琴湖冰封如玉，三叠泉化作晶莹冰瀑。若是运气好，还能遇见如梦似幻的雾凇，玉树琼枝，美不胜收。
+              </p>
+              <a
+              href="videos/winter.mp4"
+              class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight"
+                >了解更多</a
+              >
+            </div>
+          </section>
+        </div>
+        <div class="tm-container-outer" id="tm-section-3">
+          <ul class="nav nav-pills tm-tabs-links">
+            <li class="tm-tab-link-li">
+              <a href="#1a" data-toggle="tab" class="tm-tab-link">
+                <img src="img/nanchang.png" alt="Image" class="img-fluid" />
+                南昌
+              </a>
+            </li>
+            <li class="tm-tab-link-li">
+              <a href="#2a" data-toggle="tab" class="tm-tab-link">
+                <img src="img/jingdezhen.png" alt="Image" class="img-fluid" />
+                景德镇
+              </a>
+            </li>
+            <li class="tm-tab-link-li">
+              <a href="#3a" data-toggle="tab" class="tm-tab-link">
+                <img src="img/shangrao.png" alt="Image" class="img-fluid" />
+                上饶
+              </a>
+            </li>
+            <li class="tm-tab-link-li">
+              <a href="#4a" data-toggle="tab" class="tm-tab-link active"
+                ><!-- Current Active Tab -->
+                <img src="img/jiujiang.png" alt="Image" class="img-fluid" />
+                九江
+              </a>
+            </li>
+            <li class="tm-tab-link-li">
+              <a href="#5a" data-toggle="tab" class="tm-tab-link">
+                <img src="img/ganzhou.png" alt="Image" class="img-fluid" />
+                赣州
+              </a>
+            </li>
+            <li class="tm-tab-link-li">
+              <a href="#6a" data-toggle="tab" class="tm-tab-link">
+                <img src="img/ji an.png" alt="Image" class="img-fluid" />
+                吉安
+              </a>
+            </li>
+            <li class="tm-tab-link-li">
+              <a href="#7a" data-toggle="tab" class="tm-tab-link">
+                <img src="img/yichun.png" alt="Image" class="img-fluid" />
+                宜春
+              </a>
+            </li>
+          </ul>
+          <div class="tab-content clearfix">
+            <!-- Tab 1 -->
+            <div class="tab-pane fade" id="1a">
+              <div class="tm-recommended-place-wrap">
+                <div class="tm-recommended-place">
+                  <img
+                    src="img/nanchang01.png"
+                    alt="Image"
+                    class="img-fluid tm-recommended-img"
+                  />
+                  <div class="tm-recommended-description-box">
+                    <h3 class="tm-recommended-title">八一广场</h3>
+                    <p class="tm-text-highlight">bayi square</p>
+                    <p class="tm-text-gray">
+                      八一广场，与江西美术馆相邻，是军旗升起的地方，始建于1952年，总体设计借鉴了天安门广场，形成了“两轴、四区、多点”的建筑结构。1977年，为纪念八一南昌起义50周年，广场上开始兴建“八一南昌起义纪念塔”...
+                    </p>
+                  </div>
+                  <a href="https://baike.baidu.com/item/%E5%85%AB%E4%B8%80%E5%B9%BF%E5%9C%BA/15817" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price-link">了解更多</p>
+                  </a>
+                </div>
+
+                <div class="tm-recommended-place">
+                  <img
+                    src="img/nanchang02.png"
+                    alt="Image"
+                    class="img-fluid tm-recommended-img"
+                  />
+                  <div class="tm-recommended-description-box">
+                    <h3 class="tm-recommended-title">滕王阁</h3>
+                    <p class="tm-text-highlight">tengwang pavilion</p>
+                    <p class="tm-text-gray">
+                      滕王阁始建于唐永徽四年（653年），为唐太宗李世民之弟滕王李元婴任江南洪州都督时所修。李元婴因思念故地滕州，修筑此阁，故名“滕王阁”。唐上元二年（675年），洪州都督阎伯屿重修滕王阁，并在此宴请宾客，初唐诗人王勃即席写下《秋日登洪府滕王阁饯别序》（即《滕王阁序》）...
+                    </p>
+                  </div>
+                  <div id="preload-hover-img"></div>
+                  <a href="https://baike.baidu.com/item/%E6%BB%95%E7%8E%8B%E9%98%81/70500" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price-link">了解更多</p>
+                  </a>
+                </div>
+
+                <div class="tm-recommended-place">
+                  <img
+                    src="img/nanchang03.png"
+                    alt="Image"
+                    class="img-fluid tm-recommended-img"
+                  />
+                  <div class="tm-recommended-description-box">
+                    <h3 class="tm-recommended-title">万寿宫</h3>
+                    <p class="tm-text-highlight">wanshou palace</p>
+                    <p class="tm-text-gray">
+                      万寿宫是南昌市区中心一座著名道教宫观，始建于晋永嘉(312年)，为礼奉东晋旌阴县令许逊所建。融合赣派风格与明代宫殿特色，青花瓷构件是其独特艺术瑰宝，建筑群包括真君殿、玉皇殿等，布局合理，雕画精美...
+                    </p>
+                  </div>
+                  <a href="https://baike.baidu.com/item/%E5%8D%97%E6%98%8C%E4%B8%87%E5%AF%BF%E5%AE%AB/5977548?fromModule=lemma_search-box" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price-link">了解更多</p>
+                  </a>
+                </div>
+
+                <div class="tm-recommended-place">
+                  <img
+                    src="img/nanchang04.png"
+                    alt="Image"
+                    class="img-fluid tm-recommended-img"
+                  />
+                  <div class="tm-recommended-description-box">
+                    <h3 class="tm-recommended-title">
+                      南昌之星
+                    </h3>
+                    <p class="tm-text-highlight">nanchang star observation wheel</p>
+                    <p class="tm-text-gray">
+                      南昌之星摩天轮于2006年建成，耗资约1亿元人民币，是世界上第三高的摩天轮，设计灵感来源于江西的传统文化和自然景观，尤其是赣江的波浪形态...
+                    </p>
+                  </div>
+                  <a href="https://baike.baidu.com/item/%E5%8D%97%E6%98%8C%E4%B9%8B%E6%98%9F%E6%91%A9%E5%A4
+                  %A9%E8%BD%AE?fromtitle=%E5%8D%97%E6%98%8C%E4%B9%8B%E6%98%9F&fromid=1499913&fromModule=lemma_search-box" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price-link">了解更多</p>
+                  </a>
+                </div>
+              </div>
+
+              <a
+                href="https://cn.bing.com/maps?q=%E6%B1%9F%E8%A5%BF%E5%8D%97%E6%98%8C%E6%97%85%E6%B8%B8%E6%99%AF%E7%82%B9%E6%8E%A8%E8%8D%90&FORM=HDRSC7&cp=ns9rzktnrx3y&lvl=13.0"
+                class="text-uppercase btn-primary tm-btn mx-auto tm-d-table"
+              >
+                Show More Places
+              </a>
+            </div>
+            <!-- tab-pane -->
+
+            <!-- Tab 2 -->
+            <div class="tab-pane fade" id="2a">
+              <div class="tm-recommended-place-wrap">
+                <div class="tm-recommended-place">
+                  <img
+                    src="img/jingdezhen01.png"
+                    alt="Image"
+                    class="img-fluid tm-recommended-img"
+                  />
+                  <div class="tm-recommended-description-box">
+                    <h3 class="tm-recommended-title">御窑博物馆</h3>
+                    <p class="tm-text-highlight">imperial kiln institute</p>
+                    <p class="tm-text-gray">
+                      御窑博物馆位于景德镇御窑厂，始建于明洪武二年，是明清两代皇家御用的瓷器制造场所，博物馆于21年重新修建完成。简约大气的红砖拱形建筑结构与历史融合，外观设计与内部展陈都将东方美学运用到极致，20年荣获建筑界的奥斯卡奖，堪称全球第二美博物馆...
+                    </p>
+                  </div>
+                  <a href="https://baike.baidu.com/item/%E5%BE%A1%E7%AA%91%E5%8D%9A%E7%89%A9%E9%A6%86?fromModule=lemma_search-box" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price-link">了解更多</p>
+                  </a>
+                </div>
+
+                <div class="tm-recommended-place">
+                  <img
+                    src="img/jingdezhen02.png"
+                    alt="Image"
+                    class="img-fluid tm-recommended-img"
+                  />
+                  <div class="tm-recommended-description-box">
+                    <h3 class="tm-recommended-title">
+                      雕塑瓷厂
+                    </h3>
+                    <p class="tm-text-highlight">sculpture porcelain factory</p>
+                    <p class="tm-text-gray">
+                      早期以生产陶瓷雕塑为主，产品曾获国家优质产品金质奖，部分作品被赠予外国元首或收藏于北京人民大会堂。雕塑瓷厂作为首批江西省工业遗产，其传统陶瓷雕塑技艺被完整保留，并融合现代创意产业发展...
+                    </p>
+                  </div>
+                  <a href="https://baike.baidu.com/item/%E9%9B%95%E5%A1%91%E7%93%B7%E5%8E%82?fromModule=lemma_search-box" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price-link">了解更多</p>
+                  </a>
+                </div>
+
+                <div class="tm-recommended-place">
+                  <img
+                    src="img/jingdezhen03.png"
+                    alt="Image"
+                    class="img-fluid tm-recommended-img"
+                  />
+                  <div class="tm-recommended-description-box">
+                    <h3 class="tm-recommended-title">
+                      陶溪川
+                    </h3>
+                    <p class="tm-text-highlight">taoxichuan</p>
+                    <p class="tm-text-gray">
+                      曾经的陶溪川是宇宙瓷厂，匠人们在这里守着1300度的信仰，如今的陶溪川用创意续写瓷的故事，是新一代匠人陶瓷文化交流聚集地，也是游客们慕名而来的休闲文创园，园区保留了瓷厂标志性的大烟囱与老厂房的结构，融入当代艺术元素，是创新更是融合...
+                    </p>
+                  </div>
+                  <a href="https://baike.baidu.com/item/%E6%99%AF%E5%BE%B7%E9%95%87%E9%99%B6%E6%BA%AA%E5%B7%9D%E6%96%87%E5%88%9B%E8%A1%97%E5%8C%BA?fromModule=lemma_search-box" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price-link">了解更多</p>
+                  </a>
+                </div>
+
+                <div class="tm-recommended-place">
+                  <img
+                    src="img/jingdezhen04.png"
+                    alt="Image"
+                    class="img-fluid tm-recommended-img"
+                  />
+                  <div class="tm-recommended-description-box">
+                    <h3 class="tm-recommended-title">
+                      瓷宫
+                    </h3>
+                    <p class="tm-text-highlight">porcelain palace</p>
+                    <p class="tm-text-gray">
+                      位于江西省景德镇市浮梁县新平村的一处独特文化景观，2010年，时年86岁的余二妹受天津“瓷房子”启发，决心为景德镇留下一座陶瓷艺术殿堂。她耗尽个人积蓄，使用毕生收藏的6万件瓷器，历时五年（2010-2015）建成瓷宫。建筑被当地人称为“老奶奶的梦幻世界”...
+                    </p>
+                  </div>
+                  <a href="https://baike.baidu.com/item/%E7%93%B7%E5%AE%AB?fromModule=lemma_search-box" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price-link">了解更多</p>
+                  </a>
+                </div>
+              </div>
+
+              <a
+                href="https://cn.bing.com/maps?q=%E6%B1%9F%E8%A5%BF%E6%99%AF%E5%BE%B7%E9%95%87%E6%97%85%E6%B8%B8%E6%99%AF%E7%82%B9%E6%8E%A8%E8%8D%90&FORM=HDRSC7&cp=nwj52mts0chz&lvl=12.4"
+                class="text-uppercase btn-primary tm-btn mx-auto tm-d-table"
+              >
+                Show More Places
+              </a>
+            </div>
+            <!-- tab-pane -->
+
+            <!-- Tab 3 -->
+            <div class="tab-pane fade" id="3a">
+              <div class="tm-recommended-place-wrap">
+                <div class="tm-recommended-place">
+                  <img
+                    src="img/shangrao01.png"
+                    alt="Image"
+                    class="img-fluid tm-recommended-img"
+                  />
+                  <div class="tm-recommended-description-box">
+                    <h3 class="tm-recommended-title">三清山</h3>
+                    <p class="tm-text-highlight">sanqing mountain</p>
+                    <p class="tm-text-gray">
+                      “揽胜遍五岳，绝景在三清” 苏轼曾这样夸奖三清山的秀丽风景，三清山因玉京、玉虚、玉华“三峰峻拔，如道教三清列坐其巅”，故名。2016年，上饶三清山风景名胜区荣获国家绿色旅游示范基地称号...
+                    </p>
+                  </div>
+                  <a href="https://baike.baidu.com/item/%E4%B8%89%E6%B8%85%E5%B1%B1/417647" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price-link">了解更多</p>
+                  </a>
+                </div>
+
+                <div class="tm-recommended-place">
+                  <img
+                    src="img/shangrao02.png"
+                    alt="Image"
+                    class="img-fluid tm-recommended-img"
+                  />
+                  <div class="tm-recommended-description-box">
+                    <h3 class="tm-recommended-title">望仙谷</h3>
+                    <p class="tm-text-highlight">wangxian valley</p>
+                    <p class="tm-text-gray">
+                      望仙谷平均海拔550米，是一个集人文、民俗、农业、美食、度假、研学为一体的度假旅游区，深入挖掘当地历史文化、地域特色文化、民族民俗文化等，打造了赣家特色夯土房民宿、多媒体剧《我就是药神》、戏曲表演、传统手工作坊、非遗体验项目等体验式文化项目...
+                    </p>
+                  </div>
+                  <a href="https://baike.baidu.com/item/%E6%9C%9B%E4%BB%99%E8%B0%B7?fromModule=lemma_search-box" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price-link">了解更多</p>
+                  </a>
+                </div>
+
+                <div class="tm-recommended-place">
+                  <img
+                    src="img/shangrao03.png"
+                    alt="Image"
+                    class="img-fluid tm-recommended-img"
+                  />
+                  <div class="tm-recommended-description-box">
+                    <h3 class="tm-recommended-title">婺源</h3>
+                    <p class="tm-text-highlight">wuyuan</p>
+                    <p class="tm-text-gray">
+                      婺源的春天，油菜花一片片绽放在山野间、田埂上，与古老的徽派建筑相映成趣，白墙黛瓦在金黄的映衬下显得更加古朴典雅，漫步乡间，空气夹杂着油菜花的芬芳。古村、石桥、流水，宛如柳暗花明、小桥流水人家，交织出最美的春天画卷...
+                    </p>
+                  </div>
+                  <a href="https://baike.baidu.com/item/%E5%A9%BA%E6%BA%90%E5%8E%BF/10898125?fromtitle=%E5%A9%BA%E6%BA%90&fromid=224042" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price-link">了解更多</p>
+                  </a>
+                </div>
+
+                <div class="tm-recommended-place">
+                  <img
+                    src="img/shangrao04.png"
+                    alt="Image"
+                    class="img-fluid tm-recommended-img"
+                  />
+                  <div class="tm-recommended-description-box">
+                    <h3 class="tm-recommended-title">卧龙谷</h3>
+                    <p class="tm-text-highlight">wolong valley</p>
+                    <p class="tm-text-gray">
+                      《国家地理》推荐的暑假避暑胜地，卧龙谷入口以金庸小说的书本造型为灵感来源，上面有金庸先生亲笔为大鄣山卧龙谷题的字，走进景区就像走进了金庸先生笔下的江湖。背面还有金庸先生的代表作品组成的诗句，引来不少游客打卡围观...
+                    </p>
+                  </div>
+                  <a href="https://baike.baidu.com/item/%E5%8D%A7%E9%BE%99%E8%B0%B7/1516819" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price-link">了解更多</p>
+                  </a>
+                </div>
+              </div>
+
+              <a
+                href="https://cn.bing.com/maps?q=%E6%B1%9F%E8%A5%BF%E4%B8%8A%E9%A5%B6%E6%97%85%E6%B8%B8%E6%99%AF%E7%82%B9%E6%8E%A8%E8%8D%90&FORM=HDRSC7&cp=nsxzf5tt40xy&lvl=9.2"
+                class="text-uppercase btn-primary tm-btn mx-auto tm-d-table"
+              >
+                Show More Places
+              </a>
+            </div>
+            <!-- tab-pane -->
+
+            <!-- Tab 4 -->
+            <div class="tab-pane fade show active" id="4a">
+              <!-- Current Active Tab WITH "show active" classes in DIV tag -->
+              <div class="tm-recommended-place-wrap">
+                <div class="tm-recommended-place">
+                  <img
+                    src="img/jiujiang01.png"
+                    alt="Image"
+                    class="img-fluid tm-recommended-img"
+                  />
+                  <div class="tm-recommended-description-box">
+                    <h3 class="tm-recommended-title">庐山</h3>
+                    <p class="tm-text-highlight">lushan mountain</p>
+                    <p class="tm-text-gray">
+                      以雄、奇、险、秀闻名于世，有“匡庐奇秀甲天下”之美誉。庐山的山峰峻峭，众多山峰连绵起伏，仿佛一幅宏大的山水画卷。三叠泉更是庐山的一大奇观，飞瀑自天而降，分三叠奔腾而下，气势磅礴，李白笔下“飞流直下三千尺，疑是银河落九天”的壮美在这里真实上演...
+                    </p>
+                  </div>
+                  <!-- <a href="#" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price">$440</p>
+                    <p class="tm-recommended-price-link">Continue Reading</p>
+                  </a> -->
+                  <a href="https://baike.baidu.com/item/%E5%BA%90%E5%B1%B1/154518" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price-link">了解更多</p>
+                  </a>
+                </div>
+
+                <div class="tm-recommended-place">
+                  <img
+                    src="img/jiujiang02.png"
+                    alt="Image"
+                    class="img-fluid tm-recommended-img"
+                  />
+                  <div class="tm-recommended-description-box">
+                    <h3 class="tm-recommended-title">东林寺</h3>
+                    <p class="tm-text-highlight">donglin monastery</p>
+                    <p class="tm-text-gray">
+                      由慧远大师于384年创建，成为南方佛教中心，隋朝以后被列为全国佛教八大道场之一，是汉族地区佛教全国重点寺院、
+                      国家著名佛教道场，也是江西省三大国际交流道场之一。东林大佛是其标志，在阿弥陀佛像里面，是中国及全球第一高的...
+                    </p>
+                  </div>
+                  <div id="preload-hover-img"></div>
+                  <a href="https://baike.baidu.com/item/%E4%B8%9C%E6%9E%97%E5%AF%BA/7801" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price-link">了解更多</p>
+                  </a>
+                </div>
+
+                <div class="tm-recommended-place">
+                  <img
+                    src="img/jiujiang03.png"
+                    alt="Image"
+                    class="img-fluid tm-recommended-img"
+                  />
+                  <div class="tm-recommended-description-box">
+                    <h3 class="tm-recommended-title">牯岭镇</h3>
+                    <p class="tm-text-highlight">guling town</p>
+                    <p class="tm-text-gray">
+                      牯岭镇位于庐山境内，海拔约一千一百米，小镇时常被云雾和山峰缭绕，因此看起来还有点像云中山城，再加上造型独特的特色居民建筑，让这里有着童话小镇的色彩搭配...
+                    </p>
+                  </div>
+                  <div id="preload-hover-img"></div>
+                  <a href="https://baike.baidu.com/item/%E7%89%AF%E5%B2%AD%E9%95%87/2228793" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price-link">了解更多</p>
+                  </a>
+                </div>
+
+                <div class="tm-recommended-place">
+                  <img
+                    src="img/jiujiang04.png"
+                    alt="Image"
+                    class="img-fluid tm-recommended-img"
+                  />
+                  <div class="tm-recommended-description-box">
+                    <h3 class="tm-recommended-title">浔阳楼</h3>
+                    <p class="tm-text-highlight">xunyang tower</p>
+                    <p class="tm-text-gray">
+                      浔阳楼始建年代不详，现楼为1987年重建。占地面积2800平方米，主楼建筑面积1000平方米，为仿宋建筑风格，花岗岩石料台基，九脊顶，外三层内四层，高21米。 浔阳楼之名最早见之于唐代江州刺史韦应物的诗中，《水浒传》小说中的宋江题反诗、李逵劫法场等故事使浔阳楼名噪天下...
+                    </p>
+                  </div>
+                  <a href="https://baike.baidu.com/item/%E6%B5%94%E9%98%B3%E6%A5%BC/1000796" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price-link">了解更多</p>
+                  </a>
+                </div>
+              </div>
+
+              <a
+                href="https://cn.bing.com/maps?q=%E6%B1%9F%E8%A5%BF%E4%B9%9D%E6%B1%9F%E6%97%85%E6%B8%B8%E6%99%AF%E7%82%B9%E6%8E%A8%E8%8D%90&FORM=HDRSC7&cp=ny53wvtnxrrq&lvl=11.5"
+                class="text-uppercase btn-primary tm-btn mx-auto tm-d-table"
+              >
+                Show More Places
+              </a>
+            </div>
+            <!-- tab-pane -->
+
+            <!-- Tab 5 -->
+            <div class="tab-pane fade" id="5a">
+              <div class="tm-recommended-place-wrap">
+                <div class="tm-recommended-place">
+                  <img
+                    src="img/ganzhou01.png"
+                    alt="Image"
+                    class="img-fluid tm-recommended-img"
+                  />
+                  <div class="tm-recommended-description-box">
+                    <h3 class="tm-recommended-title">郁孤台公园</h3>
+                    <p class="tm-text-highlight">yugutai park</p>
+                    <p class="tm-text-gray">
+                      赣州宋代古城墙自台下逶迤而过，属市级文物保护单位，1985年12月列为第一批省级重点风景名胜区点，因坐落于山顶，以山势高阜、郁然孤峙得名...
+                    </p>
+                  </div>
+                  <a href="https://baike.baidu.com/item/%E9%83%81%E5%AD%A4%E5%8F%B0%E5%85%AC%E5%9B%AD?fromModule=lemma_search-box" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price-link">了解更多</p>
+                  </a>
+                </div>
+
+                <div class="tm-recommended-place">
+                  <img
+                    src="img/ganzhou02.png"
+                    alt="Image"
+                    class="img-fluid tm-recommended-img"
+                  />
+                  <div class="tm-recommended-description-box">
+                    <h3 class="tm-recommended-title">杨仙岭</h3>
+                    <p class="tm-text-highlight">yangxianling</p>
+                    <p class="tm-text-gray">
+                      其历史与唐代堪舆大师杨筠松(号救贫仙人)密切相关，相传他曾在此修炼并传道，后人为纪念他更名为“杨仙岭”。在赣县区梅林镇隔江（贡江）相望，有一座形状奇特的花岗岩石山，整座山形像一条大船，兀立在水急浪高的贡江对岸...
+                    </p>
+                  </div>
+                  <a href="https://baike.baidu.com/item/%E6%9D%A8%E4%BB%99%E5%B2%AD?fromModule=lemma_search-box" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price-link">了解更多</p>
+                  </a>
+                </div>
+
+                <div class="tm-recommended-place">
+                  <img
+                    src="img/ganzhou03.png"
+                    alt="Image"
+                    class="img-fluid tm-recommended-img"
+                  />
+                  <div class="tm-recommended-description-box">
+                    <h3 class="tm-recommended-title">灶儿巷</h3>
+                    <p class="tm-text-highlight">zao'er lane</p>
+                    <p class="tm-text-gray">
+                      灶儿巷起源于宋代，明清时因衙役居住而得名“皂儿巷”，后谐音演变为“灶儿巷”，曾是古虔州（赣州古称）最繁华的地段之一，是赣州古城的历史见证。相比于传统的徽派建筑，灶儿巷内的徽派建筑更多地结合的赣南地区客家建筑的特征...
+                    </p>
+                  </div>
+                  <a href="https://baike.baidu.com/item/%E7%81%B6%E5%84%BF%E5%B7%B7?fromModule=lemma_search-box" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price-link">了解更多</p>
+                  </a>
+                </div>
+
+                <div class="tm-recommended-place">
+                  <img
+                    src="img/ganzhou04.png"
+                    alt="Image"
+                    class="img-fluid tm-recommended-img"
+                  />
+                  <div class="tm-recommended-description-box">
+                    <h3 class="tm-recommended-title">上堡梯田</h3>
+                    <p class="tm-text-highlight">shangbao terraced fields</p>
+                    <p class="tm-text-gray">
+                      梯田届的劳斯莱斯，最佳观赏期是站在八卦田观景台高处眺望梯田美景，尽收眼底一块块、一排排、一垄垄梯田，从山脚叠环到山顶如链似带，高低错落...
+                    </p>
+                  </div>
+                  <a href="https://baike.baidu.com/item/%E4%B8%8A%E5%A0%A1%E6%A2%AF%E7%94%B0?fromModule=lemma_search-box" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price-link">了解更多</p>
+                  </a>
+                </div>
+              </div>
+
+              <a
+                href="https://cn.bing.com/maps?q=%E6%B1%9F%E8%A5%BF%E8%B5%A3%E5%B7%9E%E6%97%85%E6%B8%B8%E6%99%AF%E7%82%B9&FORM=HDRSC7&cp=n9wg8qtkmj41&lvl=9.8"
+                class="text-uppercase btn-primary tm-btn mx-auto tm-d-table"
+              >
+                Show More Places
+              </a>
+            </div>
+            <!-- tab-pane -->
+
+            <!-- Tab 6 -->
+            <div class="tab-pane fade" id="6a">
+              <div class="tm-recommended-place-wrap">
+                <div class="tm-recommended-place">
+                  <img
+                    src="img/ji an01.png"
+                    alt="Image"
+                    class="img-fluid tm-recommended-img"
+                  />
+                  <div class="tm-recommended-description-box">
+                    <h3 class="tm-recommended-title">白鹭洲书院</h3>
+                    <p class="tm-text-highlight">bailuzhou academy</p>
+                    <p class="tm-text-gray">
+                      白鹭洲书院与庐山的白鹿洞书院、铅山的鹅湖书院、南昌的豫章书院合称江西四大书院。宝祐三年(1255年)，文天祥曾在白鹭洲书院读书，至宝祐四年（1256年），文天祥状元及第，且吉州生员共中进士40名，震惊朝野。白鹭洲书院也因此扬名天下大喜之余，宋理宗亲赐御书“白鹭洲书院”匾额，悬挂在书院大门之上。书院由此名声大振，成为江西四大书院之一...
+                    </p>
+                  </div>
+                  <a href="https://baike.baidu.com/item/%E7%99%BD%E9%B9%AD%E6%B4%B2%E4%B9%A6%E9%99%A2?fromModule=lemma_search-box" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price-link">了解更多</p>
+                  </a>
+                </div>
+
+                <div class="tm-recommended-place">
+                  <img
+                    src="img/ji an02.png"
+                    alt="Image"
+                    class="img-fluid tm-recommended-img"
+                  />
+                  <div class="tm-recommended-description-box">
+                    <h3 class="tm-recommended-title">清原山·净居寺</h3>
+                    <p class="tm-text-highlight">qingyuan mountain·jingju temple</p>
+                    <p class="tm-text-gray">
+                      始建于唐神龙元年（705年），后宋徽宗赐名“净居寺”。净居寺由佛教南宗六祖弟子行思禅师创建，是佛教禅宗青原派系祖庭，并由此分出曹洞宗、云门宗、法眼宗三个宗派。“净居寺”、“大雄宝殿”匾额由原中国佛教协会会长赵朴初先生题写...
+                    </p>
+                  </div>
+                  <a href="https://baike.baidu.com/item/%E5%87%80%E5%B1%85%E5%AF%BA/8116897?fromModule=lemma_search-box" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price-link">了解更多</p>
+                  </a>
+                </div>
+
+                <div class="tm-recommended-place">
+                  <img
+                    src="img/ji an03.png"
+                    alt="Image"
+                    class="img-fluid tm-recommended-img"
+                  />
+                  <div class="tm-recommended-description-box">
+                    <h3 class="tm-recommended-title">起凤山矿坑公园</h3>
+                    <p class="tm-text-highlight">qifengshan mine park</p>
+                    <p class="tm-text-gray">
+                      原为一处废弃的灰岩矿采矿场，占地100多公顷。经过多年的生态修复和治理，该矿坑现已转变为一个集生态修复与休闲观光为一体的城市公园‌...
+                    </p>
+                  </div>
+                  <a href="https://baike.baidu.com/item/%E5%AE%89%E7%A6%8F%E5%8E%BF%E7%9F%BF%E5%9D%91%E5%85%AC%E5%9B%AD?fromModule=lemma_search-box" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price-link">了解更多</p>
+                  </a>
+                </div>
+
+                <div class="tm-recommended-place">
+                  <img
+                    src="img/ji an04.png"
+                    alt="Image"
+                    class="img-fluid tm-recommended-img"
+                  />
+                  <div class="tm-recommended-description-box">
+                    <h3 class="tm-recommended-title">渼陂古村</h3>
+                    <p class="tm-text-highlight">meibei ancient village</p>
+                    <p class="tm-text-gray">
+                      古牌坊亦为启公祠前院落门楼。始建于清末，高6米，宽10.7米，深度为5.31米。坊为六柱五间式，石柱作莲柱状明间花坊中置石匾...
+                    </p>
+                  </div>
+                  <a href="https://baike.baidu.com/item/%E6%B8%BC%E9%99%82%E5%8F%A4%E6%9D%91?fromModule=lemma_search-box" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price-link">了解更多</p>
+                  </a>
+                </div>
+              </div>
+
+              <a
+                href="https://cn.bing.com/maps?q=%E6%B1%9F%E8%A5%BF%E5%90%89%E5%AE%89%E6%97%85%E6%B8%B8%E6%99%AF%E7%82%B9%E6%8E%A8%E8%8D%90&FORM=HDRSC7&cp=nh8fmytk4n67&lvl=9.4"
+                class="text-uppercase btn-primary tm-btn mx-auto tm-d-table"
+              >
+                Show More Places
+              </a>
+            </div>
+            <!-- tab-pane -->
+
+            <!-- Tab 7 -->
+            <div class="tab-pane fade" id="7a">
+              <div class="tm-recommended-place-wrap">
+                <div class="tm-recommended-place">
+                  <img
+                    src="img/yichun01.png"
+                    alt="Image"
+                    class="img-fluid tm-recommended-img"
+                  />
+                  <div class="tm-recommended-description-box">
+                    <h3 class="tm-recommended-title">明月山</h3>
+                    <p class="tm-text-highlight">mingyue mountain</p>
+                    <p class="tm-text-gray">
+                      因山势呈半圆形似明月或传说中“有石夜光如月”得名，集“生态游览、休闲度假、科普教育、宗教旅游”于一体，以“山奇、泉硒、禅真、农趣”著称，拥有云谷飞瀑、青云栈道、高山草甸、富硒温泉等景观...
+                    </p>
+                  </div>
+                  <a href="https://baike.baidu.com/item/%E6%98%8E%E6%9C%88%E5%B1%B1/2231" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price-link">了解更多</p>
+                  </a>
+                </div>
+
+                <div class="tm-recommended-place">
+                  <img
+                    src="img/yichun02.png"
+                    alt="Image"
+                    class="img-fluid tm-recommended-img"
+                  />
+                  <div class="tm-recommended-description-box">
+                    <h3 class="tm-recommended-title">港背村</h3>
+                    <p class="tm-text-highlight">gangbei village</p>
+                    <p class="tm-text-gray">
+                      地处国家九岭山自然保护区，风景秀丽，生态环境优越。港背村因其优美的自然风光和生态优势，获得了多项荣誉，2019年被评为国家森林乡村，2022年被认定为江西省第一批省级“一村一品”示范村镇‌...
+                    </p>
+                  </div>
+                  <a href="https://baike.baidu.com/item/%E6%B8%AF%E8%83%8C%E6%9D%91?fromModule=lemma_search-box" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price-link">了解更多</p>
+                  </a>
+                </div>
+
+                <div class="tm-recommended-place">
+                  <img
+                    src="img/yichun03.png"
+                    alt="Image"
+                    class="img-fluid tm-recommended-img"
+                  />
+                  <div class="tm-recommended-description-box">
+                    <h3 class="tm-recommended-title">万载古城</h3>
+                    <p class="tm-text-highlight">wanzai ancient city</p>
+                    <p class="tm-text-gray">
+                      以赣派建筑为内核，保存明清至民国时期的古祠堂28座（涉及15个姓氏）、古民居、街巷、粮仓等，是中国罕见的赣西古建筑群‌，是万载的“历史档案馆”和“老城博物馆”...
+                    </p>
+                  </div>
+                  <a href="https://baike.baidu.com/item/%E4%B8%87%E8%BD%BD%E5%8F%A4%E5%9F%8E?fromModule=lemma_search-box" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price-link">了解更多</p>
+                  </a>
+                </div>
+
+                <div class="tm-recommended-place">
+                  <img
+                    src="img/yichun04.png"
+                    alt="Image"
+                    class="img-fluid tm-recommended-img"
+                  />
+                  <div class="tm-recommended-description-box">
+                    <h3 class="tm-recommended-title">化成禅寺</h3>
+                    <p class="tm-text-highlight">huacheng zen temple</p>
+                    <p class="tm-text-gray">
+                      化成禅寺的前身为两个佛寺的合成：上岩叫开化院，下岩叫惠昭院，距今已经有1200多年历史。位于秀江北岸的化成岩半腰，依山傍水，海拔163米，以“清奥”的自然景观著称，被誉为“江南一胜”‌，其“化成晚钟”为“宜春八景”之一，寺内供奉缅甸赠送的卧佛及十八罗汉像‌...
+                    </p>
+                  </div>
+                  <a href="https://baike.baidu.com/item/%E5%8C%96%E6%88%90%E5%AF%BA/66863?fromModule=lemma_search-box" class="tm-recommended-price-box">
+                    <p class="tm-recommended-price-link">了解更多</p>
+                  </a>
+                </div>
+              </div>
+              <a
+                href="https://cn.bing.com/maps?q=%E6%B1%9F%E8%A5%BF%E5%AE%9C%E6%98%A5%E6%97%85%E6%B8%B8%E6%99%AF%E7%82%B9%E6%8E%A8%E8%8D%90&FORM=HDRSC7&cp=nn0yshtj052k&lvl=14.5"
+                class="text-uppercase btn-primary tm-btn mx-auto tm-d-table"
+              >
+                Show More Places
+              </a>
+            </div>
+            <!-- tab-pane -->
+          </div>
+        </div>
+
+        <div class="tm-container-outer tm-position-relative" id="tm-section-4">
+          <!-- <div id="google-map"></div> -->
+          <!-- <form action="index.html" method="post" class="tm-contact-form">
+            <div class="form-group tm-name-container">
+              <input
+                type="text"
+                id="contact_name"
+                name="contact_name"
+                class="form-control"
+                placeholder="Name"
+                required
+              />
+            </div> -->
+            <!-- <div class="form-group tm-email-container">
+              <input
+                type="email"
+                id="contact_email"
+                name="contact_email"
+                class="form-control"
+                placeholder="Email"
+                required
+              />
+            </div> -->
+            <!-- <div class="form-group">
+              <input
+                type="text"
+                id="contact_subject"
+                name="contact_subject"
+                class="form-control"
+                placeholder="Subject"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <textarea
+                id="contact_message"
+                name="contact_message"
+                class="form-control"
+                rows="9"
+                placeholder="Message"
+                required
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="btn btn-primary tm-btn-primary tm-btn-send text-uppercase"
+            >
+              Send Message Now
+            </button>
+          </form>
+        </div> -->
+        <!-- .tm-container-outer -->
+
+        <footer class="tm-container-outer">
+          <p class="mb-0">
+            Copyright © <span class="tm-current-year">2018</span> Your Company .
+            Designed by
+            <a
+              rel="nofollow"
+              href="http://www.google.com/+templatemo"
+              target="_parent"
+              >Template Mo</a
+            >
+          </p>
+        </footer>
+      </div>
+    </div>
+    <!-- .main-content -->
+
+    <!-- load JS files -->
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <!-- jQuery (https://jquery.com/download/) -->
+    <script src="js/popper.min.js"></script>
+    <!-- https://popper.js.org/ -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- https://getbootstrap.com/ -->
+    <script src="js/datepicker.min.js"></script>
+    <!-- https://github.com/qodesmith/datepicker -->
+    <script src="js/jquery.singlePageNav.min.js"></script>
+    <!-- Single Page Nav (https://github.com/ChrisWojcik/single-page-nav) -->
+    <script src="slick/slick.min.js"></script>
+    <!-- http://kenwheeler.github.io/slick/ -->
+    <script src="js/jquery.scrollTo.min.js"></script>
+    <!-- https://github.com/flesler/jquery.scrollTo -->
+    <script>
+      /* Google Maps
+        ------------------------------------------------*/
+      var map = "";
+      var center;
+
+      function initialize() {
+        var mapOptions = {
+          zoom: 16,
+          center: new google.maps.LatLng(37.769725, -122.462154),
+          scrollwheel: false,
+        };
+
+        map = new google.maps.Map(
+          document.getElementById("google-map"),
+          mapOptions
+        );
+
+        google.maps.event.addDomListener(map, "idle", function () {
+          calculateCenter();
+        });
+
+        google.maps.event.addDomListener(window, "resize", function () {
+          map.setCenter(center);
+        });
+      }
+
+      function calculateCenter() {
+        center = map.getCenter();
+      }
+
+      function loadGoogleMap() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src =
+          "https://maps.googleapis.com/maps/api/js?key=AIzaSyDVWt4rJfibfsEDvcuaChUaZRS5NXey1Cs&v=3.exp&sensor=false&" +
+          "callback=initialize";
+        document.body.appendChild(script);
+      }
+
+      /* DOM is ready
+        ------------------------------------------------*/
+      $(function () {
+        // Change top navbar on scroll
+        $(window).on("scroll", function () {
+          if ($(window).scrollTop() > 100) {
+            $(".tm-top-bar").addClass("active");
+          } else {
+            $(".tm-top-bar").removeClass("active");
+          }
+        });
+
+        // Smooth scroll to search form
+        $(".tm-down-arrow-link").click(function () {
+          $.scrollTo("#tm-section-search", 300, { easing: "linear" });
+        });
+
+        // Date Picker in Search form
+        var pickerCheckIn = datepicker("#inputCheckIn");
+        var pickerCheckOut = datepicker("#inputCheckOut");
+
+        // Update nav links on scroll
+        $("#tm-top-bar").singlePageNav({
+          currentClass: "active",
+          offset: 60,
+        });
+
+        // Close navbar after clicked
+        $(".nav-link").click(function () {
+          $("#mainNav").removeClass("show");
+        });
+
+        // Slick Carousel
+        $(".tm-slideshow").slick({
+          infinite: true,
+          arrows: true,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        });
+
+        loadGoogleMap(); // Google Map
+        $(".tm-current-year").text(new Date().getFullYear()); // Update year in copyright
+      });
+    </script>
+  </body>
+</html>

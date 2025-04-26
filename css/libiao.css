@@ -1,0 +1,53 @@
+@charset "utf-8";
+/* CSS Document */
+/*body{margin: 0;padding: 0;}
+ul{margin: 0;padding: 0; list-style: none;}
+a{text-decoration: none;}*/
+*{padding:0;margin:0}
+	a{text-decoration:none;}
+	ul,li{list-style:none}
+
+h3,p{margin: 0;font-weight: normal;}
+.main_box{
+    width: 100%;
+    position: relative;
+    top: 40px;
+}
+.box{
+    width: 1260px;
+    margin: 10px auto;
+    /* padding: 15px; */
+}
+.box_ul_li{
+    width: 252px;
+    height: 300px;
+    box-shadow: 3px 2px 30px rgba(68, 68, 68, 0.1);
+    float: left;
+    text-align: center;
+    position: relative;
+    transition: all .6s ease-out;
+	background-color: white;
+}
+.box ul li h3{
+    padding-top: 30px;
+    color: #333;
+    font-size: 18px;
+}
+.box ul li p{
+    margin-top: 7px;
+	padding-left: 9px;
+	padding-right: 9px;
+    color: #666;
+    font-size: 14px;
+}
+.box ul li img{
+    width: 163px;
+	height: 135px;
+    position: absolute;
+    right: 48px;
+    bottom: 40px;
+    transition: all .6s ease-out;
+}
+.box_ul_li:hover {
+    background-color: rgb(217, 217, 217); /* 鼠标悬停时背景变为绿色 */
+}

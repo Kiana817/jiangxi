@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>江西美食指南</title>
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script>tailwind.config = { theme: { extend: { colors: { primary: '#f97316', secondary: '#f59e0b' }, borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' } } } }</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+  <style>
+    :where([class^="ri-"])::before {
+      content: "\f3c2";
+    }
+
+    body {
+      font-family: 'Noto Sans SC', sans-serif;
+    }
+
+    header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    position: fixed; /* 将导航栏固定在页面顶部 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* 确保导航栏显示在其他内容之上 */
+    height: 110px;
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+    margin-left: 276px;
+  }
+  
+  .logo-container img {
+    width: 70px;
+    height: 70px;
+    margin-right: 10px;
+  }
+  .logo-container h1{
+    margin-top: 0px;
+  }
+  nav {
+    margin-left: auto;
+  }
+  
+  nav ul {
+    display: flex;
+    list-style-type: none;
+    margin-right: 276px;
+  }
+  
+  nav ul li {
+    margin: 0 20px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s ease;
+  }
+  
+  nav ul li a.active {
+    color:  rgb(104, 199, 187);
+  }
+  
+  nav ul li a:hover {
+    color:  rgb(104, 199, 187);
+  }
+
+
+
+    .food-list {
+
+      /* max-height: 610px; */
+      overflow-y: auto;
+    }
+
+    .food-list::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .food-list::-webkit-scrollbar-thumb {
+      background-color: rgba(156, 163, 175, 0.5);
+      border-radius: 4px;
+    }
+
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+    }
+
+    .carousel {
+      /* display: flex;
+transition: transform 0.5s ease; */
+
+      display: flex;
+      transition: transform 0.3s ease-in-out;
+      gap: 16px;
+      /* 添加间距 */
+
+    }
+
+    .carousel-item {
+      /* flex: 0 0 auto;
+width: 20%;
+transition: all 0.3s ease; */
+      min-width: calc(25% - 16px);
+      /* 每个商品项占据1/4宽度减去间距 */
+      box-sizing: border-box;
+    }
+
+    .carousel-item.active {
+      transform: scale(1.1);
+      z-index: 10;
+    }
+
+    .category-tabs .active {
+      background-color: #f97316;
+      color: white;
+    }
+
+    /*弹幕*/
+    .container-box {
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            width: 1400px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff; /* 背景颜色 */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 阴影 */
+        }
+        
+        #barrage-container {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%; /* 宽度调整 */
+            height: 60px;
+            overflow: hidden;
+        }
+        
+        .barrage-line {
+            margin: 10px auto;
+            position: absolute;
+            display: flex;
+            white-space: nowrap;
+            will-change: transform;
+        }
+        
+        .barrage-item {
+            color: orange;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            margin-right: 40px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .barrage-item:hover {
+            transform: scale(1.1);
+        }
+        
+        .tooltip {
+            position: fixed; /* 使用fixed定位 */
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 8px 12px;
+            font-size: 14px;
+            color: #333;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            pointer-events: none;
+            white-space: nowrap;
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+  <header>
+    <div class="logo-container">
+        <img src="image/logo.png" alt="">
+        <h1>匠游江西</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">赣风启航</a></li>
+          <li><a href="seasons-main.html">赣韵四季</a></li>
+          <li><a href="非遗.html">匠游江西</a></li>
+          <li><a href="food.html" class="active">赣饭人</a></li>
+        </ul>
+      </nav>
+</header>
+  <!-- 主视觉横幅 -->
+  <div style="text-align: center;">
+    <img src="image/背景图.jpg" style="width: 1400px; height: auto; margin: 0 auto">
+  </div>
+  <!-- 美食分类与展示区 -->
+  <div class="container mx-auto px-4 py-8">
+    <!-- 弹幕效果区域 -->
+    <div class="relative border border-gray-200 rounded-lg p-6 mb-10 overflow-hidden">
+      <p class="text-lg text-gray-700 mb-6">
+        江西美食以其独特的风味和丰富的历史文化底蕴而闻名。江西菜属于赣菜系，口味偏辣，讲究原汁原味，保留食材的本真。从南昌的瓦罐汤到赣州的客家菜，从上饶的煌上煌到九江的庐山三石宴，江西美食种类繁多，各具特色。无论是寻常百姓家的家常小炒，还是宴席上的精致佳肴，都能让人感受到浓厚的赣鄱风情。
+      </p>
+      <div class="container-box">
+        <div id="barrage-container">
+            <div class="barrage-line" id="barrage-line1"></div>
+            <div class="barrage-line" id="barrage-line2"></div>
+        </div>
+        <div class="tooltip" id="tooltip"></div>
+      </div>
+    </div>
+  </div>
+
+    <script>
+        // 江西美食数据
+        const foods = [
+            { name: "煌上煌酱鸭", desc: "特色酱料腌制的鸭肉" },
+            { name: "客家酿豆腐", desc: "豆腐中酿入肉馅" },
+            { name: "赣州炒粉", desc: "赣州特色炒米粉" },
+            { name: "九江蒸米粉", desc: "九江特色蒸制米粉" },
+            { name: "上饶炒年糕", desc: "上饶特色炒年糕" },
+            { name: "宜春米粉肉", desc: "米粉与肉蒸制" },
+            { name: "萍乡米糠", desc: "萍乡特色米制品" },
+            { name: "南昌拌粉", desc: "花生、萝卜干、辣椒拌制" },
+            { name: "油条包糍粑", desc: "酥脆油条包裹软糯糍粑" },
+            { name: "瓦罐汤", desc: "多种食材慢火煨制" }
+        ];
+
+        const container = document.getElementById('barrage-container');
+        const barrageLine1 = document.getElementById('barrage-line1');
+        const barrageLine2 = document.getElementById('barrage-line2');
+        const tooltip = document.getElementById('tooltip');
+        
+        let isPaused = false;
+        let position1 = 0;
+        let position2 = 0;
+        let lineWidth = 0;
+        let animationId;
+        const speed = 2;
+        
+        // 创建弹幕行
+        function createBarrageLines() {
+            // 清空现有内容
+            barrageLine1.innerHTML = '';
+            barrageLine2.innerHTML = '';
+            
+            // 创建第一条弹幕线
+            foods.forEach(food => {
+                const item = document.createElement('span');
+                item.className = 'barrage-item';
+                item.textContent = food.name;
+                item.dataset.desc = food.desc;
+                barrageLine1.appendChild(item);
+                
+                // 添加事件监听
+                item.addEventListener('mouseenter', handleMouseEnter);
+                item.addEventListener('mousemove', handleMouseMove);
+                item.addEventListener('mouseleave', handleMouseLeave);
+            });
+            
+            // 创建第二条相同的弹幕线
+            const items = barrageLine1.querySelectorAll('.barrage-item');
+            items.forEach(item => {
+                const clone = item.cloneNode(true);
+                barrageLine2.appendChild(clone);
+                // 添加事件监听到克隆元素
+                clone.addEventListener('mouseenter', handleMouseEnter);
+                clone.addEventListener('mousemove', handleMouseMove);
+                clone.addEventListener('mouseleave', handleMouseLeave);
+            });
+            
+            // 计算弹幕线宽度
+            lineWidth = barrageLine1.offsetWidth;
+            
+            // 设置初始位置
+            position1 = 0;
+            position2 = lineWidth;
+            barrageLine1.style.transform = `translateX(${position1}px)`;
+            barrageLine2.style.transform = `translateX(${position2}px)`;
+        }
+        
+        // 鼠标悬停事件
+        function handleMouseEnter(e) {
+            isPaused = true;
+            tooltip.textContent = e.target.dataset.desc;
+            tooltip.style.display = 'block';
+        }
+        
+        // 鼠标移动事件 (更新提示框位置)
+        function handleMouseMove(e) {
+            if (tooltip.style.display === 'block') {
+                // 直接设置工具提示框的位置为鼠标位置
+                tooltip.style.left = `${e.clientX + 15}px`;
+                tooltip.style.top = `${e.clientY + 15}px`;
+            }
+        }
+        
+        // 鼠标离开事件
+        function handleMouseLeave() {
+            isPaused = false;
+            tooltip.style.display = 'none';
+        }
+        
+        // 动画循环
+        function animate() {
+            if (!isPaused) {
+                position1 -= speed;
+                position2 -= speed;
+                
+                // 当第一条弹幕完全移出屏幕时，将其放到第二条后面
+                if (position1 <= -lineWidth) {
+                    position1 = position2 + lineWidth;
+                }
+                
+                // 当第二条弹幕完全移出屏幕时，将其放到第一条后面
+                if (position2 <= -lineWidth) {
+                    position2 = position1 + lineWidth;
+                }
+                
+                barrageLine1.style.transform = `translateX(${position1}px)`;
+                barrageLine2.style.transform = `translateX(${position2}px)`;
+            }
+            
+            animationId = requestAnimationFrame(animate);
+        }
+        
+        // 初始化
+        function init() {
+            createBarrageLines();
+            animate();
+        }
+        
+        // 启动
+        window.addEventListener('load', init);
+        window.addEventListener('resize', () => {
+            cancelAnimationFrame(animationId);
+            init();
+        });
+    </script>
+
+      <div class="container mx-auto px-4 py-8">
+        <div class="bg-white rounded-lg shadow-md p-8 mb-10">
+          <!-- 新增的两段文字 -->
+          <h2 class="text-3xl font-bold mb-4 text-gray-800 text-center">江西美食文化</h2>
+          <p class="text-lg text-gray-700 text-center mb-8">
+            江西美食文化源远流畅你，融合了中原文化和楚文化的精髓，形成了独具特色的赣菜体系。
+          </p>
+
+          <!-- 顶部标题和描述 -->
+          <div class="flex flex-col md:flex-row gap-8 mb-8">
+            <div class="md:w-2/3">
+              <h2 class="text-3xl font-bold mb-4 text-gray-800">赣菜的历史渊源</h2>
+              <p class="text-lg text-gray-700" style="margin-bottom: 25px;">
+                江西菜，又称赣菜，是中国八大菜系之一，历史可追溯至春秋战国时期。江西地处长江中下游南岸，气候温和，物产丰富，为赣菜的发展提供了丰富的物质基础。
+
+              </p>
+              <p class="text-lg text-gray-700" style="margin-bottom: 25px;">
+                唐宋时期，江西经济文化繁荣，饮食文化也随之发展。明清时期，赣菜形成了以"辣"为主要特色的烹饪风格，并逐渐形成了自己的菜系体系。
+              </p>
+              <p class="text-lg text-gray-700" style="margin-bottom: 25px;">
+                现代赣菜继承了传统工艺，同时不断创新，形成了"色、香、味、形"俱佳的独特风格，成为中国饮食文化的重要组成部分。
+              </p>
+            </div>
+            <div class="md:w-1/3">
+              <img src="image\江西美食文化.jpg" alt="江西美食文化" class="w-full h-48 object-cover rounded-lg"
+                style="min-width: auto; height: auto;">
+            </div>
+          </div>
+
+          <!-- 三个带图标的小块 -->
+          <div class="grid md:grid-cols-3 gap-6">
+            <!-- 历史渊源 -->
+            <div class="flex flex-col items-start gap-4 p-4 bg-gray-50 rounded-lg">
+              <div class="bg-primary/10 p-3 rounded-full">
+                <i class="ri-history-line ri-xl text-primary"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2 text-gray-800">赣菜的历史渊源</h3>
+                <p class="text-gray-700">
+                  江西菜又称赣菜，是中国八大菜系之一，历史可追溯至春秋战国时期。江西地处长江中下游南岸，气候温和，物产丰富...
+                </p>
+              </div>
+            </div>
+
+            <!-- 烹饪技艺 -->
+            <div class="flex flex-col items-start gap-4 p-4 bg-gray-50 rounded-lg">
+              <div class="bg-primary/10 p-3 rounded-full">
+                <i class="ri-restaurant-line ri-xl text-primary"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2 text-gray-800">独特的烹饪技艺</h3>
+                <p class="text-gray-700">
+                  江西菜注重火候掌握，善用煨、炖、焖等烹饪方法，讲究原汁原味，保留食材的本真味道...
+                </p>
+              </div>
+            </div>
+
+            <!-- 饮食习俗 -->
+            <div class="flex flex-col items-start gap-4 p-4 bg-gray-50 rounded-lg">
+              <div class="bg-primary/10 p-3 rounded-full">
+                <i class="ri-cake-line ri-xl text-primary"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2 text-gray-800">饮食礼仪与习俗</h3>
+                <p class="text-gray-700">
+                  江西人注重饮食礼仪，讲究"食不言，寝不语"，同时也有许多与饮食相关的传统习俗...
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- 分类标签 -->
+      <div class="container mx-auto px-4 py-8">
+        <div class="category-tabs flex space-x-4">
+          <button
+            class="w-20 h-20 rounded-full border-2 border-primary flex items-center justify-center active transition-all"
+            style="margin: 0 auto;"
+            data-category="1">
+            <span>赣菜系</span>
+          </button>
+          <button
+            class="w-20 h-20 rounded-full border-2 border-gray-300 flex items-center justify-center transition-all"
+            style="margin: 0 auto;"
+            data-category="2">
+            <span>客家菜</span>
+          </button>
+          <button
+            class="w-20 h-20 rounded-full border-2 border-gray-300 flex items-center justify-center transition-all"
+            style="margin: 0 auto;"
+            data-category="3">
+            <span>特色小吃</span>
+          </button>
+          <button
+            class="w-20 h-20 rounded-full border-2 border-gray-300 flex items-center justify-center transition-all"
+            style="margin: 0 auto;"
+            data-category="4">
+            <span>传统点心</span>
+          </button>
+          <button
+            class="w-20 h-20 rounded-full border-2 border-gray-300 flex items-center justify-center transition-all"
+            style="margin: 0 auto;"
+            data-category="5">
+            <span>特色饮品</span>
+          </button>
+        </div>
+      </div>
+      <!-- 美食内容展示区 -->
+      <div class="container mx-auto px-4 py-8" id="foodContent">
+        <div class="flex flex-col md:flex-row gap-6">
+          <!-- 左侧大图和描述 -->
+          <div class="md:w-2/5">
+            <div class="aspect-square bg-gray-200 rounded-lg overflow-hidden mb-4">
+              <img src="image\赣菜系.jpg" alt="赣菜系" class="w-full h-full object-cover object-top" id="categoryImage">
+            </div>
+            <div class="p-4 bg-gray-100 rounded-lg">
+              <h3 class="text-lg font-bold mb-2" id="categoryTitle">赣菜系特色与概括</h3>
+              <p class="text-gray-700" id="categoryDesc">
+                赣菜是江西省的传统菜系，以辣、香、酥、脆为特点，讲究原汁原味。赣菜烹饪技法多样，善用煨、炖、蒸、炒等手法，注重食材的新鲜度和本味的保留，形成了独特的赣鄱风味。</p>
+            </div>
+          </div>
+          <!-- 右侧美食列表 -->
+          <div class="md:w-3/5 food-list" id="foodList">
+            <div class="border-b border-gray-200 pb-4 mb-4">
+              <div class="flex gap-4">
+                <div class="w-24 h-24 bg-gray-200 rounded flex-shrink-0">
+                  <img src="image/莲花血鸭.jpg" alt="莲花血鸭" class="w-full h-full object-cover object-top rounded">
+                </div>
+                <div>
+                  <h4 class="text-lg font-bold">莲花血鸭</h4>
+                  <p class="text-gray-600">萍乡莲花县名菜，鸭肉切碎与鸭血同炒，辣味浓郁，口感独特。</p>
+                </div>
+              </div>
+            </div>
+            <div class="border-b border-gray-200 pb-4 mb-4">
+              <div class="flex gap-4">
+                <div class="w-24 h-24 bg-gray-200 rounded flex-shrink-0">
+                  <img src="image/三杯鸡.jpg" alt="三杯鸡" class="w-full h-full object-cover object-top rounded">
+                </div>
+                <div>
+                  <h4 class="text-lg font-bold">三杯鸡</h4>
+                  <p class="text-gray-600">一杯米酒、一杯酱油、一杯猪油，不加水焖烧，肉质酥烂。</p>
+                </div>
+              </div>
+            </div>
+            <div class="border-b border-gray-200 pb-4 mb-4">
+              <div class="flex gap-4">
+                <div class="w-24 h-24 bg-gray-200 rounded flex-shrink-0">
+                  <img src="image/鄱阳湖鱼头.jpg" alt="鄱阳湖鱼头" class="w-full h-full object-cover object-top rounded">
+                </div>
+                <div>
+                  <h4 class="text-lg font-bold">鄱湖胖鱼头</h4>
+                  <p class="text-gray-600">鄱阳湖鳙鱼头为主料，汤汁奶白鲜浓，可加豆腐或粉条。</p>
+                </div>
+              </div>
+            </div>
+            <div class="border-b border-gray-200 pb-4 mb-4">
+              <div class="flex gap-4">
+                <div class="w-24 h-24 bg-gray-200 rounded flex-shrink-0">
+                  <img src="image/萍乡烟熏肉.jpg" alt="萍乡烟熏肉" class="w-full h-full object-cover object-top rounded">
+                </div>
+                <div>
+                  <h4 class="text-lg font-bold">萍乡烟熏肉</h4>
+                  <p class="text-gray-600">萍乡特色，用米糠或茶叶熏制，咸香带烟熏味，可蒸可炒。</p>
+                </div>
+              </div>
+            </div>
+            <div class="border-b border-gray-200 pb-4 mb-4">
+              <div class="flex gap-4">
+                <div class="w-24 h-24 bg-gray-200 rounded flex-shrink-0">
+                  <img src="image/藜蒿炒腊肉.jpg" alt="藜蒿炒腊肉" class="w-full h-full object-cover object-top rounded">
+                </div>
+                <div>
+                  <h4 class="text-lg font-bold">藜蒿炒腊肉</h4>
+                  <p class="text-gray-600">鄱阳湖地区的时令菜，藜蒿清香脆嫩，搭配咸香腊肉，风味独特。藜蒿仅取嫩茎，腊肉需用江西本地烟熏制品。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const foodData = {
+            '1': {
+              title: '赣菜系特色与概括',
+              desc: '赣菜是江西省的传统菜系，以辣、香、酥、脆为特点，讲究原汁原味。赣菜烹饪技法多样，善用煨、炖、蒸、炒等手法，注重食材的新鲜度和本味的保留，形成了独特的赣鄱风味。',
+              image: 'image/赣菜系.jpg',
+              foods: [
+                {
+                  name: '莲花血鸭',
+                  desc: '萍乡莲花县名菜，鸭肉切碎与鸭血同炒，辣味浓郁，口感独特。',
+                  image: 'image/莲花血鸭.jpg'
+                },
+                {
+                  name: '三杯鸡',
+                  desc: '一杯米酒、一杯酱油、一杯猪油，不加水焖烧，肉质酥烂。',
+                  image: 'image/三杯鸡.jpg'
+                },
+                {
+                  name: ' 鄱阳湖鱼头',
+                  desc: '鄱阳湖鳙鱼头为主料，汤汁奶白鲜浓，可加豆腐或粉条。',
+                  image: 'image/鄱阳湖鱼头.jpg'
+                },
+                {
+                  name: '萍乡烟熏肉',
+                  desc: '萍乡特色，用米糠或茶叶熏制，咸香带烟熏味，可蒸可炒。',
+                  image: 'image/萍乡烟熏肉.jpg'
+                },
+                {
+                  name: '藜蒿炒腊肉',
+                  desc: '鄱阳湖地区的时令菜，藜蒿清香脆嫩，搭配咸香腊肉，风味独特。藜蒿仅取嫩茎，腊肉需用江西本地烟熏制品。',
+                  image: 'image/藜蒿炒腊肉.jpg'
+                }
+              ]
+            },
+            '2': {
+              title: '客家菜特色与概括',
+              desc: '客家菜是江西重要的地方特色菜系之一，以咸香为主，注重本味。烹饪技法以煎、炒、炖为主，善用各种香料和调味品，讲究火候的掌控，使菜品既保持原汁原味，又带有浓郁的客家特色。',
+              image: 'image/客家菜.jpg',
+              foods: [
+                {
+                  name: '客家酿豆腐',
+                  desc: '豆腐挖洞填入猪肉末、鱼茸或香菇馅，煎或焖煮后汤汁浓郁，豆香与肉香交融。赣南常用油豆腐酿制，称“油豆腐塞肉”',
+                  image: 'image/客家酿豆腐.jpg'
+                },
+                {
+                  name: '客家酿菜',
+                  desc: '将咸菜叶包裹糯米和肉馅，经过特殊工艺制作，具有独特的咸香味，是客家传统美食。',
+                  image: 'image/客家酿菜.jpg'
+                },
+                {
+                  name: '兴国粉蒸鱼',
+                  desc: '草鱼片裹米粉蒸制，搭配辣椒、芋头或红薯，鱼肉滑嫩，米粉吸足鲜味。',
+                  image: 'image/兴国粉蒸鱼.jpg'
+                },
+                {
+                  name: '黄元米馃',
+                  desc: '赣南客家传统米制点心，用大禾米加黄栀子染成黄色，蒸熟后切片炒或煮，口感软糯，常配腊肉、青菜。',
+                  image: 'image/黄元米馃.jpg'
+                },
+                {
+                  name: ' 薯粉饺子',
+                  desc: '用红薯粉做皮，包入萝卜、香菇、肉末等馅料，蒸熟后透明滑韧，是客家独特主食。',
+                  image: 'image/薯粉饺子.jpg'
+                }
+              ]
+            },
+            '3': {
+              title: '特色小吃概览',
+              desc: '江西特色小吃种类繁多，风味独特，既有街边小吃的烟火气息，又有传统美食的文化底蕴。从早点到夜宵，从咸鲜到甜糯，满足不同时段的饮食需求。',
+              image: 'image/特色小吃.jpg',
+              foods: [
+                {
+                  name: '瓦罐汤',
+                  desc: '南昌特色小吃，用瓦罐熬制的各式浓汤，料足味美，暖胃养生。',
+                  image: 'image/瓦罐汤.jpg'
+                },
+                {
+                  name: '南昌拌粉',
+                  desc: '用细米粉烫熟后拌入酱油、辣椒、萝卜干、花生米等，爽滑香辣，是南昌人早餐的标配。',
+                  image: 'image/南昌拌粉.jpg'
+                },
+                {
+                  name: '碱水粑',
+                  desc: '用大米和碱水制成，切片后炒鸡蛋、辣椒或腊肉，口感韧滑，略带碱香。',
+                  image: 'image/碱水粑.jpg'
+                },
+                {
+                  name: '糯米饭团',
+                  desc: '传统小吃，将糯米饭团裹上花生碎、芝麻等，外酥内软，香甜可口。',
+                  image: 'image/糯米饭团.jpg'
+                },
+                {
+                  name: '豆腐圆子',
+                  desc: '将豆腐打成浆，加入调料制成小圆子，口感滑嫩，清淡爽口。',
+                  image: 'image/豆腐圆子.jpg'
+                }
+              ]
+            },
+            '4': {
+              title: '传统点心概览',
+              desc: '江西传统点心融合了赣鄱地区的饮食文化精髓，从咸点到甜点，从早茶点心到宴席糕点，每一样都凝聚着江西人民的智慧与匠心。',
+              image: 'image/传统点心.jpg',
+              foods: [
+                {
+                  name: '糯米糍',
+                  desc: '传统糯米点心，外皮柔韧，内馅香甜，是江西传统节日必备的美食。',
+                  image: 'image/糯米糍.jpg'
+                },
+                {
+                  name: '艾米果',
+                  desc: '用艾草和糯米粉制成，包入咸甜馅料（如笋干、芝麻），蒸熟后清香软糯。',
+                  image: 'image/艾米果.jpg'
+                },
+                {
+                  name: '油条包糍粑',
+                  desc: '将酥脆的油条和软糯的糍粑结合在一起，口感丰富，咸甜交织，是当地人早餐或街头小吃的经典选择。',
+                  image: 'image/油条包糍粑.jpg'
+                },
+                {
+                  name: '南康月亮巴',
+                  desc: '米浆中加入黄豆或花生，油炸成月亮形薄饼，香脆可口。',
+                  image: 'image/南康月亮巴.jpg'
+                },
+                {
+                  name: '萍乡花糕',
+                  desc: '萍乡特色糕点，造型精美，层次分明，既是点心也是艺术品。',
+                  image: 'image/萍乡花糕.jpg'
+                }
+              ]
+            },
+            '5': {
+              title: '特色饮品概览',
+              desc: '江西特色饮品既有传统茶饮的典雅韵味，又有现代饮品的创新风格。从清晨的一杯香茗到夏日的解暑饮品，处处体现着江西饮食文化的独特魅力。',
+              image: 'image/特色饮品.jpg',
+              foods: [
+                {
+                  name: '庐山云雾茶',
+                  desc: '江西名茶，产自庐山云雾缭绕处，茶香清淡，回味悠长。',
+                  image: 'image/庐山云雾茶1.jpg'
+                },
+                {
+                  name: '婺源绿茶',
+                  desc: '婺源特产，茶叶形状优美，汤色翠绿，香气高雅持久。',
+                  image: 'image/婺源绿茶1.jpg'
+                },
+                {
+                  name: '赣南红糖姜茶',
+                  desc: '使用赣南红糖与新鲜姜片熬制，暖胃驱寒，深受欢迎。',
+                  image: 'image/赣南红糖姜茶.jpg'
+                },
+                {
+                  name: '南昌米酒',
+                  desc: '传统米酒，清甜醇厚，既可饮用，也可入菜。',
+                  image: 'image/南昌米酒.jpg'
+                },
+                {
+                  name: '客家擂茶',
+                  desc: '将茶叶与各种果仁、芝麻等擂制，营养丰富，别具风味。',
+                  image: 'image/客家擂茶.jpg'
+                }
+              ]
+            }
+          };
+          const categoryButtons = document.querySelectorAll('.category-tabs button');
+          categoryButtons.forEach(button => {
+            button.addEventListener('click', function () {
+              const categoryId = this.getAttribute('data-category');
+              const categoryData = foodData[categoryId];
+              if (categoryData) {
+                document.getElementById('categoryTitle').textContent = categoryData.title;
+                document.getElementById('categoryDesc').textContent = categoryData.desc;
+                document.getElementById('categoryImage').src = `${categoryData.image}`;
+                const foodListHtml = categoryData.foods.map(food => `
+<div class="border-b border-gray-200 pb-4 mb-4">
+<div class="flex gap-4">
+<div class="w-24 h-24 bg-gray-200 rounded flex-shrink-0">
+<img src="${food.image}"
+alt="${food.name}"
+class="w-full h-full object-cover object-top rounded">
+</div>
+<div>
+<h4 class="text-lg font-bold">${food.name}</h4>
+<p class="text-gray-600">${food.desc}</p>
+</div>
+</div>
+</div>
+`).join('');
+                document.getElementById('foodList').innerHTML = foodListHtml;
+              }
+            });
+          });
+        });
+      </script>
+      <!-- 特产推荐区 -->
+      <div class="container mx-auto px-4 py-8">
+        <h2 class="text-2xl font-bold mb-6 text-center">江西特产推荐</h2>
+        <div class="carousel-container">
+          <div class="carousel" style="transform: translateX(-130%)">
+            <div class="carousel-item p-2 active">
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="h-48 bg-gray-200">
+                  <img src="image/赣南脐橙.jpg" alt="赣南脐橙" class="w-full h-full object-cover object-top">
+                </div>
+                <div class="p-4">
+                  <h3 class="font-bold">赣南脐橙</h3>
+                  <div class="flex items-center gap-2">
+                    <div class="mt-2 inline-block bg-gray-200 px-3 py-1 rounded-full text-sm font-semibold">¥ 20.80起
+                    </div>
+                    <a href="https://uland.taobao.com/sem/tbsearch?bc_fl_src=tbsite_T9W2LtnM&channelSrp=bingSomama&clk1=c4db7144d3d72f59cc7100ee82add4cc&commend=all&ie=utf8&initiative_id=tbindexz_20170306&localImgKey=&msclkid=620f1b70779a1296e603737410c20e1a&page=1&q=%E8%B5%A3%E5%8D%97%E8%84%90%E6%A9%99&refpid=mm_2898300158_3078300397_115665800437&search_type=item&sourceId=tb.index&spm=tbpc.pc_sem_alimama%2Fa.201856.d13&ssid=s5-e&tab=all"
+                      target="_blank"
+                      class="mt-2 w-8 h-8 flex items-center justify-center text-primary hover:text-primary/80 transition-colors">
+                      <i class="ri-shopping-cart-line ri-lg"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item p-2">
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="h-48 bg-gray-200">
+                  <img src="image/南昌米粉.jpg" alt="南昌米粉" class="w-full h-full object-cover object-top">
+                </div>
+                <div class="p-4">
+                  <h3 class="font-bold">南昌米粉</h3>
+                  <div class="flex items-center gap-2">
+                    <div class="mt-2 inline-block bg-gray-200 px-3 py-1 rounded-full text-sm font-semibold">¥ 16.50起
+                    </div>
+                    <a href="https://uland.taobao.com/sem/tbsearch?=undefined&=undefined&=undefined&_input_charset=utf-8&bc_fl_src=tbsite_T9W2LtnM&channelSrp=bingSomama&clk1=3fa74693b0a4598d561ffa5526b6a458&commend=all&ie=utf8&initiative_id=tbindexz_20170306&localImgKey=&msclkid=620f1b70779a1296e603737410c20e1a&page=1&preLoadOrigin=https%3A%2F%2Fwww.taobao.com&q=%E5%8D%97%E6%98%8C%E6%8B%8C%E7%B2%89&refpid=mm_2898300158_3078300397_115665800437&search_type=item&source=suggest&sourceId=tb.index&spm=tbpc.pc_sem_alimama%2Fa.201856.d13&ssid=s5-e&suggest_query=&tab=all&wq="
+                      target="_blank"
+                      class="mt-2 w-8 h-8 flex items-center justify-center text-primary hover:text-primary/80 transition-colors">
+                      <i class="ri-shopping-cart-line ri-lg"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item p-2">
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="h-48 bg-gray-200">
+                  <img src="image/宁都辣椒酱.jpg" alt="宁都辣椒酱" class="w-full h-full object-cover object-top">
+                </div>
+                <div class="p-4">
+                  <h3 class="font-bold">宁都辣椒酱</h3>
+                  <div class="flex items-center gap-2">
+                    <div class="mt-2 inline-block bg-gray-200 px-3 py-1 rounded-full text-sm font-semibold">¥ 88.50起
+                    </div>
+                    <a href="https://uland.taobao.com/sem/tbsearch?bc_fl_src=tbsite_T9W2LtnM&channelSrp=bingSomama&clk1=33d3eda478a2336e1314a0f26c3d2066&commend=all&ie=utf8&initiative_id=tbindexz_20170306&localImgKey=&msclkid=620f1b70779a1296e603737410c20e1a&page=1&q=%E6%B1%9F%E8%A5%BF%E5%AE%81%E9%83%BD%E8%BE%A3%E6%A4%92%E9%85%B1&refpid=mm_2898300158_3078300397_115665800437&search_type=item&sourceId=tb.index&spm=tbpc.pc_sem_alimama%2Fa.201856.d13&ssid=s5-e&tab=all"
+                      target="_blank"
+                      class="mt-2 w-8 h-8 flex items-center justify-center text-primary hover:text-primary/80 transition-colors">
+                      <i class="ri-shopping-cart-line ri-lg"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item p-2">
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="h-48 bg-gray-200">
+                  <img src="image/庐山云雾茶.jpg" alt="庐山云雾茶" class="w-full h-full object-cover object-top">
+                </div>
+                <div class="p-4">
+                  <h3 class="font-bold">庐山云雾茶</h3>
+                  <div class="flex items-center gap-2">
+                    <div class="mt-2 inline-block bg-gray-200 px-3 py-1 rounded-full text-sm font-semibold">¥ 85.00起
+                    </div>
+                    <a href="https://uland.taobao.com/sem/tbsearch?bc_fl_src=tbsite_T9W2LtnM&channelSrp=bingSomama&clk1=2c59d56d582a700c6923884f46610269&commend=all&ie=utf8&initiative_id=tbindexz_20170306&localImgKey=&msclkid=620f1b70779a1296e603737410c20e1a&page=1&q=%E5%BA%90%E5%B1%B1%E4%BA%91%E9%9B%BE%E8%8C%B6&refpid=mm_2898300158_3078300397_115665800437&search_type=item&sourceId=tb.index&spm=tbpc.pc_sem_alimama%2Fa.201856.d13&ssid=s5-e&tab=all"
+                      target="_blank"
+                      class="mt-2 w-8 h-8 flex items-center justify-center text-primary hover:text-primary/80 transition-colors">
+                      <i class="ri-shopping-cart-line ri-lg"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 新增的商品项 -->
+            <div class="carousel-item p-2">
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="h-48 bg-gray-200">
+                  <img src="image/婺源绿茶.jpg" alt="婺源绿茶" class="w-full h-full object-cover object-top">
+                </div>
+                <div class="p-4">
+                  <h3 class="font-bold">婺源绿茶</h3>
+                  <div class="flex items-center gap-2">
+                    <div class="mt-2 inline-block bg-gray-200 px-3 py-1 rounded-full text-sm font-semibold">¥ 43.00起
+                    </div>
+                    <a href="https://uland.taobao.com/sem/tbsearch?bc_fl_src=tbsite_T9W2LtnM&channelSrp=bingSomama&clk1=eca97d5975836ba72862def3f8c3d300&commend=all&ie=utf8&initiative_id=tbindexz_20170306&localImgKey=&msclkid=620f1b70779a1296e603737410c20e1a&page=1&q=%E5%A9%BA%E6%BA%90%E7%BB%BF%E8%8C%B6&refpid=mm_2898300158_3078300397_115665800437&search_type=item&sourceId=tb.index&spm=tbpc.pc_sem_alimama%2Fa.201856.d13&ssid=s5-e&tab=all"
+                      target="_blank"
+                      class="mt-2 w-8 h-8 flex items-center justify-center text-primary hover:text-primary/80 transition-colors">
+                      <i class="ri-shopping-cart-line ri-lg"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item p-2">
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="h-48 bg-gray-200">
+                  <img src="image/齐云山南酸枣糕.jpg" alt="齐云山南酸枣糕" class="w-full h-full object-cover object-top">
+                </div>
+                <div class="p-4">
+                  <h3 class="font-bold">齐云山南酸枣糕</h3>
+                  <div class="flex items-center gap-2">
+                    <div class="mt-2 inline-block bg-gray-200 px-3 py-1 rounded-full text-sm font-semibold">¥ 9.90起
+                    </div>
+                    <a href="https://uland.taobao.com/sem/tbsearch?bc_fl_src=tbsite_T9W2LtnM&channelSrp=bingSomama&clk1=8ce2bbe46f1aeb94cfbb51f4a9f17161&commend=all&ie=utf8&initiative_id=tbindexz_20170306&localImgKey=&msclkid=620f1b70779a1296e603737410c20e1a&page=1&q=%E9%BD%90%E4%BA%91%E5%B1%B1%E5%8D%97%E9%85%B8%E6%9E%A3%E7%B3%95&refpid=mm_2898300158_3078300397_115665800437&search_type=item&sourceId=tb.index&spm=tbpc.pc_sem_alimama%2Fa.201856.d13&ssid=s5-e&tab=all"
+                      target="_blank"
+                      class="mt-2 w-8 h-8 flex items-center justify-center text-primary hover:text-primary/80 transition-colors">
+                      <i class="ri-shopping-cart-line ri-lg"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item p-2">
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="h-48 bg-gray-200">
+                  <img src="image/南昌煌上煌酱鸭.jpg" alt="南昌煌上煌酱鸭" class="w-full h-full object-cover object-top">
+                </div>
+                <div class="p-4">
+                  <h3 class="font-bold">南昌煌上煌酱鸭</h3>
+                  <div class="flex items-center gap-2">
+                    <div class="mt-2 inline-block bg-gray-200 px-3 py-1 rounded-full text-sm font-semibold">¥ 62.57起
+                    </div>
+                    <a href="https://uland.taobao.com/sem/tbsearch?bc_fl_src=tbsite_T9W2LtnM&channelSrp=bingSomama&clk1=9014850c21bb43b2b66ffba1cd67bad4&commend=all&ie=utf8&initiative_id=tbindexz_20170306&localImgKey=&msclkid=620f1b70779a1296e603737410c20e1a&page=1&q=%E5%8D%97%E6%98%8C%E7%85%8C%E4%B8%8A%E7%85%8C%E9%85%B1%E9%B8%AD&refpid=mm_2898300158_3078300397_115665800437&search_type=item&sourceId=tb.index&spm=tbpc.pc_sem_alimama%2Fa.201856.d13&ssid=s5-e&tab=all"
+                      target="_blank"
+                      class="mt-2 w-8 h-8 flex items-center justify-center text-primary hover:text-primary/80 transition-colors">
+                      <i class="ri-shopping-cart-line ri-lg"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item p-2">
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="h-48 bg-gray-200">
+                  <img src="image/丰城冻米糕.png" alt="丰城冻米糖" class="w-full h-full object-cover object-top">
+                </div>
+                <div class="p-4">
+                  <h3 class="font-bold">丰城冻米糖</h3>
+                  <div class="flex items-center gap-2">
+                    <div class="mt-2 inline-block bg-gray-200 px-3 py-1 rounded-full text-sm font-semibold">¥ 12.80起
+                    </div>
+                    <a href="https://uland.taobao.com/sem/tbsearch?bc_fl_src=tbsite_T9W2LtnM&channelSrp=bingSomama&clk1=d2714dbda35460f9c5871c0e99b2603a&commend=all&ie=utf8&initiative_id=tbindexz_20170306&localImgKey=&msclkid=620f1b70779a1296e603737410c20e1a&page=1&q=%E4%B8%B0%E5%9F%8E%E5%86%BB%E7%B1%B3%E7%B3%96&refpid=mm_2898300158_3078300397_115665800437&search_type=item&sourceId=tb.index&spm=tbpc.pc_sem_alimama%2Fa.201856.d13&ssid=s5-e&tab=all"
+                      target="_blank"
+                      class="mt-2 w-8 h-8 flex items-center justify-center text-primary hover:text-primary/80 transition-colors">
+                      <i class="ri-shopping-cart-line ri-lg"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item p-2">
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="h-48 bg-gray-200">
+                  <img src="image/茶油.png" alt="婺源茶油" class="w-full h-full object-cover object-top">
+                </div>
+
+                <div class="p-4">
+                  <h3 class="font-bold">婺源茶油</h3>
+                  <div class="flex items-center gap-2">
+                    <div class="mt-2 inline-block bg-gray-200 px-3 py-1 rounded-full text-sm font-semibold">¥ 32.30起
+                    </div>
+                    <a href="https://uland.taobao.com/sem/tbsearch?bc_fl_src=tbsite_T9W2LtnM&channelSrp=bingSomama&clk1=8d2d3de8aabeb727ccbf8bcdd3df7e02&commend=all&ie=utf8&initiative_id=tbindexz_20170306&localImgKey=&msclkid=620f1b70779a1296e603737410c20e1a&page=1&q=%E5%A9%BA%E6%BA%90%E8%8C%B6%E6%B2%B9&refpid=mm_2898300158_3078300397_115665800437&search_type=item&sourceId=tb.index&spm=tbpc.pc_sem_alimama%2Fa.201856.d13&ssid=s5-e&tab=all"
+                      target="_blank"
+                      class="mt-2 w-8 h-8 flex items-center justify-center text-primary hover:text-primary/80 transition-colors">
+                      <i class="ri-shopping-cart-line ri-lg"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button
+            class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 p-2 rounded-full shadow-md z-10 prev-btn !rounded-button">
+            <div class="w-8 h-8 flex items-center justify-center">
+              <i class="ri-arrow-left-s-line ri-lg"></i>
+            </div>
+          </button>
+          <button
+            class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 p-2 rounded-full shadow-md z-10 next-btn !rounded-button">
+            <div class="w-8 h-8 flex items-center justify-center">
+              <i class="ri-arrow-right-s-line ri-lg"></i>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- 页面底部 -->
+    <div class="w-full h-64 bg-cover bg-center"
+      style="background-image: url('https://readdy.ai/api/search-image?query=Night%2520cityscape%2520of%2520Nanchang%252C%2520Jiangxi%2520Province%252C%2520China%252C%2520showing%2520the%2520illuminated%2520skyline%2520with%2520modern%2520buildings%2520along%2520the%2520Ganjiang%2520River%252C%2520with%2520colorful%2520lights%2520reflecting%2520on%2520the%2520water%2520surface&width=1200&height=300&seq=13&orientation=landscape');">
+      <div class="w-full h-full flex items-center justify-center bg-black bg-opacity-40">
+        <p class="text-2xl font-bold text-white text-center">品味江西 · 感受千年赣鄱文化的魅力</p>
+      </div>
+    </div>
+    <footer class="bg-gray-900 text-white py-8">
+      <div class="container mx-auto px-4 text-center">
+        <p>© 2025 江西美食文化推广中心 版权所有</p>
+        <p class="mt-2 text-gray-400">联系我们：jiangxifood@example.com | 电话：0791-88888888</p>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // 分类切换功能
+        const categoryButtons = document.querySelectorAll('.category-tabs button');
+        categoryButtons.forEach(button => {
+          button.addEventListener('click', function () {
+            // 移除所有按钮的active类
+            categoryButtons.forEach(btn => {
+              btn.classList.remove('active');
+              btn.classList.add('border-gray-300');
+              btn.classList.remove('border-primary');
+            });
+            // 添加当前按钮的active类
+            this.classList.add('active');
+            this.classList.remove('border-gray-300');
+            this.classList.add('border-primary');
+          });
+        });
+        // 轮播功能
+        const carousel = document.querySelector('.carousel');
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        let currentIndex = 0;
+        const itemWidth = 20; // 每个项目占20%宽度
+        function updateCarousel() {
+          const offset = -currentIndex * itemWidth;
+          carousel.style.transform = `translateX(${offset}%)`;
+          // 更新active状态
+          carouselItems.forEach((item, index) => {
+            if (index === currentIndex) {
+              item.classList.add('active');
+            } else {
+              item.classList.remove('active');
+            }
+          });
+        }
+        prevBtn.addEventListener('click', function () {
+          if (currentIndex > 0) {
+            currentIndex--;
+            updateCarousel();
+          }
+        });
+        nextBtn.addEventListener('click', function () {
+          if (currentIndex < carouselItems.length - 1) {
+            currentIndex++;
+            updateCarousel();
+          }
+        });
+      });
+    </script>
+</body>
+
+</html>

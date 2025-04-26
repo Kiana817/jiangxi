@@ -1,0 +1,118 @@
+/* 通用样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  width: 1400px;
+}
+
+nav {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+/* 江西美食图片展示区样式 */
+.food-image {
+  height: 200px;
+  background-color: #999;
+  margin-bottom: 20px;
+}
+
+/* 弹幕效果样式 */
+
+
+/* 美食分类样式 */
+.category-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.category {
+  width: 80px;
+  height: 80px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.category.active {
+  background-color: #f90;
+  color: white;
+}
+
+/* 分类内容展示区样式 */
+.category-content {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.content-item {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.item-image {
+  width: 100px;
+  height: 100px;
+  background-color: #999;
+  margin-right: 10px;
+}
+
+.item-info {
+  flex: 1;
+}
+
+.item-info p {
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+/* 特产推荐样式 */
+.product-carousel {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.product-item {
+  width: 150px;
+  height: 200px;
+  border: 1px solid #ccc;
+  margin: 0 10px;
+  text-align: center;
+}
+
+.product-image {
+  height: 150px;
+  background-color: #999;
+  margin-bottom: 10px;
+}
+
+.cart-icon {
+  text-align: center;
+  cursor: pointer;
+}
+
+/* 背景图片样式 */
+.background-image {
+  height: 100px;
+  background-color: #999;
+}

@@ -1,0 +1,414 @@
+@charset "utf-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: #e6e6e6;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: white;
+  position: fixed; /* 将导航栏固定在页面顶部 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* 确保导航栏显示在其他内容之上 */
+  height: 110px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  margin-left: 276px;
+}
+
+.logo-container img {
+  width: 70px;
+  height: 70px;
+  margin-right: 10px;
+}
+.logo-container h1{
+  margin-top: 0px;
+}
+nav {
+  margin-left: auto;
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  margin-right: 276px;
+}
+
+nav ul li {
+  margin: 0 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: black;
+  transition: color 0.3s ease;
+}
+
+nav ul li a.active {
+  color:  rgb(104, 199, 187);
+}
+
+nav ul li a:hover {
+  color:  rgb(104, 199, 187);
+}
+
+.background {
+  width: 1400px;
+  height: 100vh;
+  background-image: url('../image/background.jpg'); /* 请替换为你自己的图片 URL 或本地图片路径 */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  margin: 0 auto;
+}
+
+.text-container {
+  position: absolute;
+  left: 140px;
+  bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.text-line-chinese {
+  font-size: 5.5em;
+  font-weight: 400; 
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 20px;
+}
+.text-line-chinese:hover{
+  color: rgb(217, 217, 217);
+}
+.text-line-english {
+  font-size: 2em; /* 英文字体大小设置小一些 */
+  font-weight: 300;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 5px; /* 英文字符间距也可适当设置 */
+}
+
+
+
+
+
+.operLine{
+  margin-bottom: 20px;
+width: 1160px;
+height:50px;
+text-align:center;
+line-height:40px;
+margin:10px auto;
+padding-top: 20px;
+}
+.operLine .line{
+position:relative;
+display:inline-block;
+padding:0px 30px;
+font-size: 25px;
+}
+.operLine .line::after{
+content:'';
+width:500px;
+position:absolute;
+top:27px;
+right:-500px;
+border-bottom:1px solid black;
+}
+.operLine .line::before{
+content:'';
+width:500px;
+position:absolute;
+top:27px;
+left:-505px;
+border-bottom:1px solid black;
+}
+.container {
+width: 90%;
+max-width: 1260px;
+margin: 45px auto;
+margin-bottom: 60px;
+padding-top: -10px;
+background-color:white;
+/* margin-bottom: 20px; */
+height: 1050px;
+border-radius: 30px;
+}
+
+/* 单页样式 */
+.page {
+display: none;
+padding: 20px;
+/* margin-top: 20px; */
+/* background: #f9f9f9; */
+border-radius: 10px;
+/* box-shadow: 0 2px 10px rgba(0,0,0,0.1); */
+}
+
+/* 栏目行样式 */
+.row {
+  display: flex;
+  gap: 30px;
+  /* margin: 20px 0; */
+  align-items: center;
+  min-height: 300px; /* 添加这一行来设置最小高度 */
+}
+
+/* 交替排列 */
+.row:nth-child(odd) {
+flex-direction: row;
+}
+
+.row:nth-child(even) {
+flex-direction: row-reverse;
+}
+
+/* 图片容器 */
+.image-box {
+flex: 0 0 45%;
+min-width: 280px;
+overflow: hidden;
+position: relative;
+}
+
+.image-box img {
+width: 100%;
+height: 300px;
+object-fit: cover;
+transition: transform 0.3s;
+}
+
+.image-box:hover img {
+transform: scale(1.05);
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.image-box .overlay {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.5);
+display: flex;
+justify-content: center;
+align-items: center;
+opacity: 0;
+transition: opacity 0.3s;
+}
+
+.image-box:hover .overlay {
+opacity: 1;
+}
+
+.image-box .overlay button {
+padding: 10px 20px;
+background-color: white;
+border: none;
+cursor: pointer;
+}
+
+/* 文字容器 */
+.text-box {
+flex: 1;
+padding: 20px;
+/* background: white; */
+border-radius: 8px;
+}
+
+.text-box h2 {
+color: #2c3e50;
+margin-bottom: 15px;
+/* border-left: 4px solid #3498db; */
+padding-left: 10px;
+}
+
+.text-box p {
+line-height: 1.8;
+color: #666;
+text-indent: 2em;
+}
+
+/* 分页控制器 */
+.pagination {
+text-align: center;
+margin-top: -90px;
+}
+
+.pagination button {
+/* padding: 10px 10px; */
+margin: 0px 10px;
+border: none;
+background: #fbfbfb;
+color: rgb(169, 166, 166);
+font-size: large;
+border-radius: 5px;
+cursor: pointer;
+transition: background 0.3s;
+}
+
+.pagination button:hover {
+background: #d6d6d6;
+}
+
+.page-numbers {
+display: inline-block;
+margin: 0 20px;
+color: rgb(169, 166, 166);
+}
+
+.page-numbers span {
+margin: 0 5px;
+padding: 5px 5px;
+border-radius: 3px;
+color: rgb(169, 166, 166);
+}
+
+/* 活动页样式 */
+.active-page {
+display: block !important;
+}
+
+/* 视频模态框样式 */
+.video-modal {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.9);
+z-index: 1000;
+justify-content: center;
+align-items: center;
+transition: opacity 0.3s;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.modal-content {
+position: relative;
+width: 80%;
+max-width: 800px;
+}
+
+#videoPlayer {
+width: 100%;
+height: auto;
+max-height: 80vh;
+border-radius: 8px;
+}
+
+.close {
+position: absolute;
+top: -40px;
+right: -40px;
+color: white;
+font-size: 40px;
+cursor: pointer;
+transition: 0.3s;
+}
+
+.close:hover {
+color: #ccc;
+}
+
+/* 优化覆盖层按钮 */
+.image-box .overlay button {
+padding: 12px 24px;
+background: rgba(255, 255, 255, 0.1);
+color: white;
+border: 2px solid white;
+border-radius: 30px;
+font-size: 1.2em;
+cursor: pointer;
+transition: all 0.3s;
+backdrop-filter: blur(5px);
+}
+
+.image-box .overlay button:hover {
+background: rgba(255, 255, 255, 0.3);
+transform: scale(1.05);
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+.modal-content {
+    width: 95%;
+}
+.close {
+    top: -30px;
+    right: -10px;
+    font-size: 30px;
+}
+.image-box .overlay button {
+    padding: 8px 16px;
+    font-size: 1em;
+}
+}
+
+#videoPlayer.need-click {
+cursor: pointer;
+opacity: 0.8;
+border: 3px dashed #fff;
+}
+
+#videoPlayer.need-click:hover {
+opacity: 1;
+border-color: #ffd700;
+}
+
+
+
+.video-modal.active {
+opacity: 1;
+visibility: visible;* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+}
+
+.jzshipin{
+  width:1260px;
+  height: 490px;
+  margin:auto;
+  position: relative;
+}
+
+.jzshipin .vsp{
+  width: 1260px;
+  height:490px;
+  margin-top: 50px;
+  /*background: #AA1F24;*/
+  background-color: white;
+  border-radius: 30px;
+}
+
+.shier{
+  width: 1260px;
+  height: 700px;
+  margin: 0 auto;
+  position: relative;
+  /*background: blueviolet;*/
+}
+
+.shier .haowu{
+  width: 1260px;
+  height:700px;
+  margin-top: 50px;
+}
+
